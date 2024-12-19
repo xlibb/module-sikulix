@@ -18,6 +18,9 @@
 
 plugins {
     id 'net.researchgate.release'
+    id "com.github.spotbugs-base"
+    id "com.github.johnrengelman.shadow"
+    id "de.undercouch.download"
 }
 
 allprojects {
@@ -25,6 +28,7 @@ allprojects {
     version = project.version
 
     apply plugin: 'maven-publish'
+    apply plugin: 'jacoco'
 
     repositories {
         mavenLocal()
@@ -58,7 +62,22 @@ allprojects {
 def moduleVersion = project.version.replace("-SNAPSHOT", "")
 
 task build {
+    dependsOn(':sikulix-examples:build')
     dependsOn(':sikulix-ballerina:build')
+    dependsOn(':sikulix-native:build')
+}
+
+subprojects {
+    configurations {
+        ballerinaStdLibs
+        jbalTools
+    }
+    dependencies {
+        jbalTools ("org.ballerinalang:jballerina-tools:${ballerinaLangVersion}") {
+            transitive = false
+        }
+
+    }
 }
 
 release {

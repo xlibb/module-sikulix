@@ -49,7 +49,7 @@ ballerina {
     module = packageName
     testCoverageParam = "--code-coverage --coverage-format=xml"
     isConnector = true
-    platform = "any"
+    platform = "java17"
 }
 
 task updateTomlFiles {
@@ -95,6 +95,8 @@ clean {
     delete 'build'
 }
 
+test.dependsOn ":${packageName}-native:build"
+build.dependsOn ":${packageName}-native:build"
 build.dependsOn "generatePomFileForMavenPublication"
 publishToMavenLocal.dependsOn build
 publish.dependsOn build
