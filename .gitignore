@@ -19,6 +19,7 @@ hs_err_pid*
 
 # Ignore everything in this directory
 target
+bin
 .classpath
 .settings
 .project

@@ -25,10 +25,10 @@ plugins {
 dependencies {
     checkstyle project(':checkstyle')
     checkstyle "com.puppycrawl.tools:checkstyle:${checkstylePluginVersion}"
-    
+
     implementation group: 'org.ballerinalang', name: 'ballerina-lang', version: "${ballerinaLangVersion}"
     implementation group: 'org.ballerinalang', name: 'ballerina-runtime', version: "${ballerinaLangVersion}"
-    implementation group: 'com.sikulix', name: 'sikulixapi', version: "2.0.5"
+    implementation group: 'com.sikulix', name: 'sikulixapi', version: '2.0.5'
 
 }
 
