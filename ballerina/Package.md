@@ -195,4 +195,4 @@ Save the screenshot images in a directory, preferably within your project folder
 
 The `sikulix` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/xlibb/module-sikulix/tree/main/examples/), covering the following use cases:
 
-1. [Automating the Filling of Student Application Form desktop Application.](https://github.com/xlibb/module-sikulix/tree/main/examples/student_appliation_form_filling). 
+1. [Automating the Filling of Student Application Form desktop Application.](https://github.com/xlibb/module-sikulix/tree/main/examples/student_applciation_form_filling). 

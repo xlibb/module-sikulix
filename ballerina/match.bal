@@ -37,53 +37,73 @@ public class Match {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Returns the location of the bottom-left corner of the element represented by the `Match` object.
+    # Returns the X coordinate of the bottom-left corner.
     #
-    # + return - Returns `Location` object represents bottom-left corner of the element.
-    public isolated function getBottomLeft() returns Location = @java:Method {
+    # + return - Returns `int` represents X coordinate of the bottom-left corner.
+    public isolated function getBottomLeftX() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Returns the location of the bottom-right corner of the element represented by the `Match` object.     
-    # 
-    # + return - Returns `Location` object represents bottom-right corner of the element.
-    public isolated function getBottomRight() returns Location = @java:Method {
+    # Returns the Y coordinate of the bottom-left corner.
+    #
+    # + return - Returns `int` represents Y coordinate of the bottom-left corner.
+    public isolated function getBottomLeftY() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Returns the location of the top-left corner of the element represented by the `Match` object.
-    # 
-    # + return - Returns `Location` object represents top-left corner of the element.
-    public isolated function getTopLeft() returns Location = @java:Method {
+    # Returns the X coordinate of the bottom-right corner.
+    #
+    # + return - Returns `int` represents X coordinate of the bottom-right corner.
+    public isolated function getBottomRightX() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Returns the location of the top-right corner of the element represented by the `Match` object.
-    # 
-    # + return - Returns `Location` object represents top-right corner of the element.
-    public isolated function getTopRight() returns Location = @java:Method {
+    # Returns the Y coordinate of the bottom-right corner.
+    #
+    # + return - Returns `int` represents Y coordinate of the bottom-right corner.
+    public isolated function getBottomRightY() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Returns the location of the center of the element represented by the `Match` object.
-    # 
-    # + return - Returns `Location` object represents center of the element.
-    public isolated function getCenter() returns Location = @java:Method {
+    # Returns the X coordinate of the top-left corner.
+    #
+    # + return - Returns `int` represents X coordinate of the top-left corner.
+    public isolated function getTopLeftX() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Returns the height of the element represented by the `Match` object.  
-    # 
-    # + return - Returns `int` represents the height of the element.
-    public isolated function getH() returns int = @java:Method {
+    # Returns the Y coordinate of the top-left corner.
+    #
+    # + return - Returns `int` represents Y coordinate of the top-left corner.
+    public isolated function getTopLeftY() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Returns the width of the element represented by the `Match` object.
-    # 
-    # + return - Returns `int` represents the width of the element.
-    public isolated function getW() returns int = @java:Method {
+    # Returns the X coordinate of the top-right corner.
+    #
+    # + return - Returns `int` represents X coordinate of the top-right corner.
+    public isolated function getTopRightX() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
+    # Returns the Y coordinate of the top-right corner.
+    #
+    # + return - Returns `int` represents Y coordinate of the top-right corner.
+    public isolated function getTopRightY() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixMatch"
+    } external;
+
+    # Returns the X coordinate of the center.
+    #
+    # + return - Returns `int` represents X coordinate of the center.
+    public isolated function getCenterX() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixMatch"
+    } external;
+
+    # Returns the Y coordinate of the center.
+    #
+    # + return - Returns `int` represents Y coordinate of the center.
+    public isolated function getCenterY() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixMatch"
+    } external;
 }

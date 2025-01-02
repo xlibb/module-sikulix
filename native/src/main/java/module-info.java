@@ -20,5 +20,6 @@ module io.ballerina.lib.sikulix {
     requires java.desktop;
     requires sikulixapi;
     requires com.sun.jna.platform;
+    requires org.slf4j;
     exports io.ballerina.lib.sikulix;
 }

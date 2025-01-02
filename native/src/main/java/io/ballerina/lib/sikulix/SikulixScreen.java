@@ -57,8 +57,12 @@ public class SikulixScreen {
     }
 
     public static boolean exists(BObject bScreen, BString imagePath) {
-        Match match = getScreen(bScreen).exists(imagePath);
-        return match != null;
+        try {
+            Match match = getScreen(bScreen).find(imagePath.toString());
+            return match.isValid();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public static void keyDown(BObject bScreen, BString key) {
@@ -82,29 +86,54 @@ public class SikulixScreen {
         return match != null;
     }
 
-    public static BObject getBottomLeft(BObject bScreen) {
+    public static int getBottomLeftX(BObject bScreen) {
         Location location = getScreen(bScreen).getBottomLeft();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getBottomRight(BObject bScreen) {
+    public static int getBottomLeftY(BObject bScreen) {
+        Location location = getScreen(bScreen).getBottomLeft();
+        return location.getY();
+    }
+
+    public static int getBottomRightX(BObject bScreen) {
         Location location = getScreen(bScreen).getBottomRight();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getTopLeft(BObject bScreen) {
+    public static int getBottomRightY(BObject bScreen) {
+        Location location = getScreen(bScreen).getBottomRight();
+        return location.getY();
+    }
+
+    public static int getTopLeftX(BObject bScreen) {
         Location location = getScreen(bScreen).getTopLeft();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getTopRight(BObject bScreen) {
+    public static int getTopLeftY(BObject bScreen) {
+        Location location = getScreen(bScreen).getTopLeft();
+        return location.getY();
+    }
+
+    public static int getTopRightX(BObject bScreen) {
         Location location = getScreen(bScreen).getTopRight();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getCenter(BObject bScreen) {
+    public static int getTopRightY(BObject bScreen) {
+        Location location = getScreen(bScreen).getTopRight();
+        return location.getY();
+    }
+
+    public static int getCenterX(BObject bScreen) {
         Location location = getScreen(bScreen).getCenter();
-        return getLocationBObject(location);
+        return location.getX();
+    }
+
+    public static int getCenterY(BObject bScreen) {
+        Location location = getScreen(bScreen).getCenter();
+        return location.getY();
     }
 
     public static int getX(BObject bScreen) {
@@ -174,13 +203,6 @@ public class SikulixScreen {
 
     private static Screen getScreen(BObject bScreen) {
         return (Screen) bScreen.getNativeData(SCREEN_OBJECT);
-    }
-
-    private static BObject getLocationBObject(Location location) {
-        BObject locationBObj = ValueCreator.createObjectValue(ModuleUtils.getModule(), 
-        LOCATION_OBJECT_TYPE, (Object) null);
-        locationBObj.addNativeData(LOCATION_OBJECT, location);
-        return locationBObj;
     }
 
     private static BObject getMatchBObject(Match match) {

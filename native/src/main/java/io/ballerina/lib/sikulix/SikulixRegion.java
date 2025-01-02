@@ -13,6 +13,8 @@ import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,6 +28,7 @@ public class SikulixRegion {
     public static final String LOCATION_OBJECT = "nativeLocationObject";
     public static final String MATCH_OBJECT_TYPE = "Match";
     public static final String MATCH_OBJECT = "nativeMatchObject";
+    private static final Logger log = LoggerFactory.getLogger(SikulixRegion.class);
 
     public static void createRegion(BObject bRegion, int x, int y, int w, int h) {
         bRegion.addNativeData(REGION_OBJECT, new Region(x, y, w, h));
@@ -82,29 +85,54 @@ public class SikulixRegion {
         return match != null;
     }
 
-    public static BObject getBottomLeft(BObject bRegion) {
+    public static int getBottomLeftX(BObject bRegion) {
         Location location = getRegion(bRegion).getBottomLeft();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getBottomRight(BObject bRegion) {
+    public static int getBottomLeftY(BObject bRegion) {
+        Location location = getRegion(bRegion).getBottomLeft();
+        return location.getY();
+    }
+
+    public static int getBottomRightX(BObject bRegion) {
         Location location = getRegion(bRegion).getBottomRight();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getTopLeft(BObject bRegion) {
+    public static int getBottomRightY(BObject bRegion) {
+        Location location = getRegion(bRegion).getBottomRight();
+        return location.getY();
+    }
+
+    public static int getTopLeftX(BObject bRegion) {
         Location location = getRegion(bRegion).getTopLeft();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getTopRight(BObject bRegion) {
+    public static int getTopLeftY(BObject bRegion) {
+        Location location = getRegion(bRegion).getTopLeft();
+        return location.getY();
+    }
+
+    public static int getTopRightX(BObject bRegion) {
         Location location = getRegion(bRegion).getTopRight();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getCenter(BObject bRegion) {
+    public static int getTopRightY(BObject bRegion) {
+        Location location = getRegion(bRegion).getTopRight();
+        return location.getY();
+    }
+
+    public static int getCenterX(BObject bRegion) {
         Location location = getRegion(bRegion).getCenter();
-        return getLocationBObject(location);
+        return location.getX();
+    }
+
+    public static int getCenterY(BObject bRegion) {
+        Location location = getRegion(bRegion).getCenter();
+        return location.getY();
     }
 
     public static int getX(BObject bRegion) {
@@ -178,13 +206,6 @@ public class SikulixRegion {
 
     private static Region getRegion(BObject bRegion) {
         return (Region) bRegion.getNativeData(REGION_OBJECT);
-    }
-
-    private static BObject getLocationBObject(Location location) {
-        BObject locationBObj = ValueCreator.createObjectValue(ModuleUtils.getModule(),
-                LOCATION_OBJECT_TYPE, (Object) null);
-        locationBObj.addNativeData(LOCATION_OBJECT, location);
-        return locationBObj;
     }
 
     private static BObject getMatchBObject(Match match) {

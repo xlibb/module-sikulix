@@ -87,7 +87,7 @@ public class Region {
     # + noOfSteps - The number of steps to scroll.
     # + return - Returns `Error` if an error occurs while scrolling.
     public isolated function wheel(int direction, int noOfSteps) returns Error? = @java:Method {
-        'class: "io.ballerina.lib.sikulix.SikulixLocation"
+        'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Checks whether the given text exists in the `Region`.
@@ -98,38 +98,73 @@ public class Region {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
-    # Returns the location of the bottom-left corner of the `Region`.
+    # Returns the X coordinate of the bottom-left corner of the `Region`.
     #
-    # + return - Returns `Location` object represents bottom-left corner of the `Region`.
-    public isolated function getBottomLeft() returns Location = @java:Method {
+    # + return - Returns `int` represents X coordinate of the bottom-left corner.
+    public isolated function getBottomLeftX() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
-    # Returns the location of the bottom-right corner of the `Region`.     
+    # Returns the Y-coordinate of the bottom-left corner of the `Region`.
     # 
-    # + return - Returns `Location` object represents bottom-right corner of the `Region`.
-    public isolated function getBottomRight() returns Location = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the bottom-left corner.
+    public isolated function getBottomLeftY() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
-    # Returns the location of the top-left corner of the `Region`.
+    # Returns the X-coordinate of the bottom-right corner of the `Region`.
     # 
-    # + return - Returns `Location` object represents top-left corner of the `Region`.
-    public isolated function getTopLeft() returns Location = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the bottom-right corner.
+    public isolated function getBottomRightX() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
-    # Returns the location of the top-right corner of the `Region`.
+    # Returns the Y-coordinate of the bottom-right corner of the `Region`.
     # 
-    # + return - Returns `Location` object represents top-right corner of the `Region`.
-    public isolated function getTopRight() returns Location = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the bottom-right corner.
+    public isolated function getBottomRightY() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
-    # Returns the location of the center of the `Region`.
+    # Returns the X-coordinate of the top-left corner of the `Region`.
     # 
-    # + return - Returns `Location` object represents center of the `Region`.
-    public isolated function getCenter() returns Location = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the top-left corner.
+    public isolated function getTopLeftX() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixRegion"
+    } external;
+
+    # Returns the Y-coordinate of the top-left corner of the `Region`.
+    # 
+    # + return - Returns `int` represents Y-coordinate of the top-left corner.
+    public isolated function getTopLeftY() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixRegion"
+    } external;
+
+    # Returns the X-coordinate of the top-right corner of the `Region`.
+    # 
+    # + return - Returns `int` represents X-coordinate of the top-right corner.
+    public isolated function getTopRightX() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixRegion"
+    } external;
+
+    # Returns the Y-coordinate of the top-right corner of the `Region`.
+    # 
+    # + return - Returns `int` represents Y-coordinate of the top-right corner.
+    public isolated function getTopRightY() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixRegion"
+    } external;
+
+    # Returns the X-coordinate of the center of the `Region`.
+    # 
+    # + return - Returns `int` represents X-coordinate of the center.
+    public isolated function getCenterX() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixRegion"
+    } external;
+
+    # Returns the Y-coordinate of the center of the `Region`.
+    # 
+    # + return - Returns `int` represents Y-coordinate of the center.
+    public isolated function getCenterY() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 

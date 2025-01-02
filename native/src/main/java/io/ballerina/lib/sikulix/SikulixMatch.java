@@ -1,12 +1,11 @@
 package io.ballerina.lib.sikulix;
 
-import io.ballerina.lib.sikulix.utils.ModuleUtils;
-import io.ballerina.runtime.api.creators.ValueCreator;
 import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BObject;
 import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
+import org.sikuli.script.Screen;
 
 public class SikulixMatch {
 
@@ -16,58 +15,85 @@ public class SikulixMatch {
     public static final String LOCATION_OBJECT = "nativeLocationObject";
 
     public static void click(BObject bMatch) {
-        Match match = (Match) getMatch(bMatch);
+        Match match = getMatch(bMatch);
         match.click();
     }
 
     public static void doubleClick(BObject bMatch) {
-        Match match = (Match) getMatch(bMatch);
+        Match match = getMatch(bMatch);
         match.doubleClick();
     }
 
     public static void rightClick(BObject bMatch) {
-        Match match = (Match) getMatch(bMatch);
+        Match match = getMatch(bMatch);
         match.rightClick();
     }
 
     public static void hover(BObject bMatch) {
-        Match match = (Match) getMatch(bMatch);
+        Match match = getMatch(bMatch);
         match.hover();
     }
 
     public static void type(BObject bMatch, BString text) {
-        Match match = (Match) getMatch(bMatch);
-        match.type(text.toString());
+        Match match = getMatch(bMatch);
+        match.click();
+        Screen screen = new Screen();
+        screen.type(text.toString());
     }
 
     public static BString getText(BObject bMatch) {
-        Match match = (Match) getMatch(bMatch);
+        Match match = getMatch(bMatch);
         return StringUtils.fromString(match.getText());
     }
 
-    public static BObject getBottomLeft(BObject bMatch) {
+    public static int getBottomLeftX(BObject bMatch) {
         Location location = getMatch(bMatch).getBottomLeft();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getBottomRight(BObject bMatch) {
+    public static int getBottomLeftY(BObject bMatch) {
+        Location location = getMatch(bMatch).getBottomLeft();
+        return location.getY();
+    }
+
+    public static int getBottomRightX(BObject bMatch) {
         Location location = getMatch(bMatch).getBottomRight();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getTopLeft(BObject bMatch) {
+    public static int getBottomRightY(BObject bMatch) {
+        Location location = getMatch(bMatch).getBottomRight();
+        return location.getY();
+    }
+
+    public static int getTopLeftX(BObject bMatch) {
         Location location = getMatch(bMatch).getTopLeft();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getTopRight(BObject bMatch) {
+    public static int getTopLeftY(BObject bMatch) {
+        Location location = getMatch(bMatch).getTopLeft();
+        return location.getY();
+    }
+
+    public static int getTopRightX(BObject bMatch) {
         Location location = getMatch(bMatch).getTopRight();
-        return getLocationBObject(location);
+        return location.getX();
     }
 
-    public static BObject getCenter(BObject bMatch) {
+    public static int getTopRightY(BObject bMatch) {
+        Location location = getMatch(bMatch).getTopRight();
+        return location.getY();
+    }
+
+    public static int getCenterX(BObject bMatch) {
         Location location = getMatch(bMatch).getCenter();
-        return getLocationBObject(location);
+        return location.getX();
+    }
+
+    public static int getCenterY(BObject bMatch) {
+        Location location = getMatch(bMatch).getCenter();
+        return location.getY();
     }
 
     public static int getX(BObject bMatch) {
@@ -89,13 +115,5 @@ public class SikulixMatch {
     private static Match getMatch(BObject bMatch) {
         return (Match) bMatch.getNativeData(MATCH_OBJECT);
     }
-
-    private static BObject getLocationBObject(Location location) {
-        BObject locationBObj = ValueCreator.createObjectValue(ModuleUtils.getModule(), 
-        LOCATION_OBJECT_TYPE, (Object) null);
-        locationBObj.addNativeData(LOCATION_OBJECT, location);
-        return locationBObj;
-    }
-
 
 }
