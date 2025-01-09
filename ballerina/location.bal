@@ -5,17 +5,17 @@ public class Location {
 
     # Initializes the Location object with the given x and y coordinates.
     #
-    # + x - The x-coordinate of the location.
-    # + y - The y-coordinate of the location.
-    public isolated function init(int x, int y) {
-        self.createLocation(x, y);
+    # Represents a point in a 2D space.
+    #
+    # + point - The coordinates of the location.
+    public isolated function init(Point point) {
+        self.createLocation(point);
     }
 
     # Creates a new location object.
     #
-    # + x - The x-coordinate of the location.
-    # + y - The y-coordinate of the location.
-    private isolated function createLocation(int x, int y) = @java:Method {
+    # + point - The coordinates of the location.
+    private isolated function createLocation(Point point) = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 

@@ -4,6 +4,7 @@ import io.ballerina.lib.sikulix.utils.ModuleUtils;
 import io.ballerina.runtime.api.creators.ErrorCreator;
 import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BError;
+import io.ballerina.runtime.api.values.BMap;
 import io.ballerina.runtime.api.values.BObject;
 import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
@@ -13,7 +14,9 @@ public class SikulixLocation {
     public static final String LOCATION_OBJECT = "nativeLocationObject";
     public static final String ERROR_TYPE = "Error";
 
-    public static void createLocation(BObject bLocation, int x, int y) {
+    public static void createLocation(BObject bLocation, BMap<BString, Object> point) {
+        long x = point.getIntValue(StringUtils.fromString("x"));
+        long y = point.getIntValue(StringUtils.fromString("y"));
         bLocation.addNativeData(LOCATION_OBJECT, new Location(x, y));
     }
 
