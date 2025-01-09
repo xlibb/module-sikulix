@@ -20,32 +20,41 @@ import ballerina/jballerina.java;
 public class Screen {
 
     # Initializes the `Screen` object.
-    public isolated function init() {
-        self.createScreen();
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function init() returns Error? {
+        check self.createScreen();
     }
 
-    # Creates a new `Screen` object.
-    private isolated function createScreen() = @java:Method {
+    private isolated function createScreen() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Clicks on the center of the `Screen`.
-    public isolated function click() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function click() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Clicks on the center of the Screen twice.
-    public isolated function doubleClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function doubleClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Right clicks on the center of the `Screen`.
-    public isolated function rightClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function rightClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Drags the mouse from the current location to the center of the `Screen`.
-    public isolated function hover() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function hover() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
@@ -53,7 +62,7 @@ public class Screen {
     #
     # + imagePath1 - The path to the image of the element to be dragged.
     # + imagePath2 - The path to the image of the location to drop the element.
-    # + return - Returns `()` is successful, otherwise returns `Error`.
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
     public isolated function dragDrop(string imagePath1, string imagePath2) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
@@ -61,28 +70,32 @@ public class Screen {
     # Press and hold the given key.
     #
     # + key - The key to be pressed.
-    public isolated function keyDown(Key key) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function keyDown(Key key) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Release the given key.
     #
     # + key - The key to be released.
-    public isolated function keyUp(Key key) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function keyUp(Key key) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Press the given key.
     #
     # + key - The key to be pressed.
-    public isolated function keyPress(Key key) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function keyPress(Key key) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Types the given string.
     #
     # + value - The string to be typed.
-    public isolated function 'type(string value) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function 'type(string value) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
@@ -90,7 +103,7 @@ public class Screen {
     #
     # + direction - The direction of the scroll. 1 for scrolling down and 0 for scrolling up.
     # + noOfSteps - The number of steps to scroll.
-    # + return - Returns `Error` if an error occurs while scrolling.
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
     public isolated function wheel(int direction, int noOfSteps) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
@@ -98,86 +111,96 @@ public class Screen {
     # Checks whether the given image exists in the `Screen`.
     #
     # + imagePath - The path to the image to be checked.
-    # + return - Returns `true` if the image exists, otherwise returns `false`.
-    public isolated function exists(string imagePath) returns boolean = @java:Method {
+    # + return - Returns `boolean` if operation successful, otherwise returns `Error`. 
+    public isolated function exists(string imagePath) returns boolean|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Checks whether the given text exists in the `Screen`.
     #
     # + text - The text to be checked.
-    # + return - Returns `true` if the text exists, otherwise returns `false`.
-    public isolated function existsText(string text) returns boolean = @java:Method {
+    # + return - Returns `boolean` if operation successful, otherwise returns `Error`. 
+    public isolated function existsText(string text) returns boolean|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the X coordinate of the bottom-left corner of the `Screen`.
     #
-    # + return - Returns `int` represents X coordinate of the bottom-left corner of the `Screen`.
-    public isolated function getBottomLeftX() returns int = @java:Method {
+    # + return - Returns `int` represents X coordinate of the bottom-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomLeftX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the Y-coordinate of the bottom-left corner of the `Screen`.
     #
-    # + return - Returns `int` represents Y-coordinate of the bottom-left corner.
-    public isolated function getBottomLeftY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the bottom-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomLeftY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the X-coordinate of the bottom-right corner of the `Screen`.
     #
-    # + return - Returns `int` represents X-coordinate of the bottom-right corner.
-    public isolated function getBottomRightX() returns int = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the bottom-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomRightX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the Y-coordinate of the bottom-right corner of the `Screen`.
     #
-    # + return - Returns `int` represents Y-coordinate of the bottom-right corner.
-    public isolated function getBottomRightY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the bottom-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomRightY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the X-coordinate of the top-left corner of the `Screen`.
     #
-    # + return - Returns `int` represents X-coordinate of the top-left corner.
-    public isolated function getTopLeftX() returns int = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the top-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopLeftX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the Y-coordinate of the top-left corner of the `Screen`.
     #
-    # + return - Returns `int` represents Y-coordinate of the top-left corner.
-    public isolated function getTopLeftY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the top-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopLeftY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the X-coordinate of the top-right corner of the `Screen`.
     #
-    # + return - Returns `int` represents X-coordinate of the top-right corner.
-    public isolated function getTopRightX() returns int = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the top-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopRightX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the Y-coordinate of the top-right corner of the `Screen`.
     #
-    # + return - Returns `int` represents Y-coordinate of the top-right corner.
-    public isolated function getTopRightY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the top-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopRightY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the X-coordinate of the center of the `Screen`.
     #
-    # + return - Returns `int` represents X-coordinate of the center.
-    public isolated function getCenterX() returns int = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the center if successful,
+    # otherwise returns `Error`.
+    public isolated function getCenterX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Returns the Y-coordinate of the center of the `Screen`.
     #
-    # + return - Returns `int` represents Y-coordinate of the center.
-    public isolated function getCenterY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the center if successful,
+    # otherwise returns `Error`.
+    public isolated function getCenterY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 

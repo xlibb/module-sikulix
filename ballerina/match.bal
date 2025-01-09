@@ -20,106 +20,116 @@ import ballerina/jballerina.java;
 public class Match {
 
     # Clicks on the element represents by `Match` object.
-    public isolated function click() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function click() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Clicks on the element represents by `Match` object. twice.
-    public isolated function doubleClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function doubleClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Right clicks on the element represents by `Match` object.
-    public isolated function rightClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function rightClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Drags the mouse from the current location to the given element represents by `Match` object.
-    public isolated function hover() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function hover() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Types the given string at the location.
     #
     # + value - The string to be typed.
-    public isolated function 'type(string value) = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function 'type(string value) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the text of the element represents by `Match` object.
     #
-    # + return - Returns `string` represents the text of the element.
-    public isolated function getText() returns string = @java:Method {
+    # + return - Returns `string` represents the text of the element if operation successful, otherwise returns `Error`.
+    public isolated function getText() returns string|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the X coordinate of the bottom-left corner.
     #
-    # + return - Returns `int` represents X coordinate of the bottom-left corner.
-    public isolated function getBottomLeftX() returns int = @java:Method {
+    # + return - Returns `int` represents X coordinate of the bottom-left corner if operation successful, otherwise returns `Error`.
+    public isolated function getBottomLeftX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the Y coordinate of the bottom-left corner.
     #
-    # + return - Returns `int` represents Y coordinate of the bottom-left corner.
-    public isolated function getBottomLeftY() returns int = @java:Method {
+    # + return - Returns `int` represents Y coordinate of the bottom-left corner if operation successful, otherwise returns `Error`.
+    public isolated function getBottomLeftY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the X coordinate of the bottom-right corner.
     #
-    # + return - Returns `int` represents X coordinate of the bottom-right corner.
-    public isolated function getBottomRightX() returns int = @java:Method {
+    # + return - Returns `int` represents X coordinate of the bottom-right corner if operation successful, otherwise returns `Error`.
+    public isolated function getBottomRightX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the Y coordinate of the bottom-right corner.
     #
-    # + return - Returns `int` represents Y coordinate of the bottom-right corner.
-    public isolated function getBottomRightY() returns int = @java:Method {
+    # + return - Returns `int` represents Y coordinate of the bottom-right corner if operation successful, otherwise returns `Error`.
+    public isolated function getBottomRightY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the X coordinate of the top-left corner.
     #
-    # + return - Returns `int` represents X coordinate of the top-left corner.
-    public isolated function getTopLeftX() returns int = @java:Method {
+    # + return - Returns `int` represents X coordinate of the top-left corner if operation successful, otherwise returns `Error`.
+    public isolated function getTopLeftX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the Y coordinate of the top-left corner.
     #
-    # + return - Returns `int` represents Y coordinate of the top-left corner.
-    public isolated function getTopLeftY() returns int = @java:Method {
+    # + return - Returns `int` represents Y coordinate of the top-left corner if operation successful, otherwise returns `Error`.
+    public isolated function getTopLeftY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the X coordinate of the top-right corner.
     #
-    # + return - Returns `int` represents X coordinate of the top-right corner.
-    public isolated function getTopRightX() returns int = @java:Method {
+    # + return - Returns `int` represents X coordinate of the top-right corner if operation successful, otherwise returns `Error`.
+    public isolated function getTopRightX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the Y coordinate of the top-right corner.
     #
-    # + return - Returns `int` represents Y coordinate of the top-right corner.
-    public isolated function getTopRightY() returns int = @java:Method {
+    # + return - Returns `int` represents Y coordinate of the top-right corner if operation successful, otherwise returns `Error`.
+    public isolated function getTopRightY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the X coordinate of the center.
     #
-    # + return - Returns `int` represents X coordinate of the center.
-    public isolated function getCenterX() returns int = @java:Method {
+    # + return - Returns `int` represents X coordinate of the center if operation successful, otherwise returns `Error`.
+    public isolated function getCenterX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
     # Returns the Y coordinate of the center.
     #
-    # + return - Returns `int` represents Y coordinate of the center.
-    public isolated function getCenterY() returns int = @java:Method {
+    # + return - Returns `int` represents Y coordinate of the center if operation successful, otherwise returns `Error`.
+    public isolated function getCenterY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 }

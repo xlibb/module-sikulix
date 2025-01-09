@@ -20,59 +20,62 @@ import ballerina/jballerina.java;
 public class Location {
 
     # Initializes the Location object with the given x and y coordinates.
-    #
-    # Represents a point in a 2D space.
-    #
     # + point - The coordinates of the location.
-    public isolated function init(Point point) {
-        self.createLocation(point);
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function init(Point point) returns Error? {
+        check self.createLocation(point);
     }
 
-    # Creates a new location object.
-    #
-    # + point - The coordinates of the location.
-    private isolated function createLocation(Point point) = @java:Method {
+    private isolated function createLocation(Point point) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Clicks on the Location.
-    public isolated function click() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function click() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Clicks on the Location twice.
-    public isolated function doubleClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function doubleClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Right clicks on the Location.
-    public isolated function rightClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function rightClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Drags the mouse from the current location to the given location.
-    public isolated function hover() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function hover() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Returns the x-coordinate of the location.
     #
     # + return - Returns `int` x-coordinate of the location.
-    public isolated function getX() returns int = @java:Method {
+    public isolated function getX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Returns the y-coordinate of the location.
     #
     # + return - Returns `int` y-coordinate of the location.
-    public isolated function getY() returns int = @java:Method {
+    public isolated function getY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Types the given string at the location.
     #
     # + value - The string to be typed.
-    # + return - Returns `Error` if an error occurs while typing, Otherwise returns `()`.
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
     public isolated function 'type(string value) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
@@ -81,7 +84,7 @@ public class Location {
     #
     # + direction - The direction of the scroll. 1 for scrolling down and 0 for scrolling up.
     # + noOfSteps - The number of steps to scroll.
-    # + return - Returns `Error` if an error occurs while scrolling, Otherwise returns `()`.
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
     public isolated function wheel(int direction, int noOfSteps) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;

@@ -16,3 +16,6 @@
 
 # Represents any error related to the Sikulix module.
 public type Error distinct error;
+
+# Represents an error that occurs when a find operation fails.
+public type FindFailedError distinct error;

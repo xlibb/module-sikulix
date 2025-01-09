@@ -17,13 +17,11 @@
 package io.ballerina.lib.sikulix;
 
 import io.ballerina.lib.sikulix.utils.ModuleUtils;
-import io.ballerina.runtime.api.creators.ErrorCreator;
+import io.ballerina.lib.sikulix.utils.Utils;
 import io.ballerina.runtime.api.creators.TypeCreator;
 import io.ballerina.runtime.api.creators.ValueCreator;
 import io.ballerina.runtime.api.types.ArrayType;
 import io.ballerina.runtime.api.types.Type;
-import io.ballerina.runtime.api.utils.StringUtils;
-import io.ballerina.runtime.api.values.BError;
 import io.ballerina.runtime.api.values.BObject;
 import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
@@ -37,28 +35,52 @@ import java.util.List;
 public class SikulixScreen {
 
     public static final String SCREEN_OBJECT = "nativeScreenObject";
-    public static final String ERROR_TYPE = "Error";
     public static final String MATCH_OBJECT_TYPE = "Match";
     public static final String MATCH_OBJECT = "nativeMatchObject";
 
-    public static void createScreen(BObject bScreen) {
-        bScreen.addNativeData(SCREEN_OBJECT, new Screen());
+    public static Object createScreen(BObject bScreen) {
+        try {
+            bScreen.addNativeData(SCREEN_OBJECT, new Screen());
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void click(BObject bScreen) {
-        getScreen(bScreen).click();
+    public static Object click(BObject bScreen) {
+        try {
+            getScreen(bScreen).click();
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void hover(BObject bScreen) {
-        getScreen(bScreen).hover();
+    public static Object hover(BObject bScreen) {
+        try {
+            getScreen(bScreen).hover();
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void doubleClick(BObject bScreen) {
-        getScreen(bScreen).doubleClick();
+    public static Object doubleClick(BObject bScreen) {
+        try {
+            getScreen(bScreen).doubleClick();
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void rightClick(BObject bScreen) {
-        getScreen(bScreen).rightClick();
+    public static Object rightClick(BObject bScreen) {
+        try {
+            getScreen(bScreen).rightClick();
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
     public static Object dragDrop(BObject bScreen, BString imagePath1, BString imagePath2) {
@@ -66,108 +88,193 @@ public class SikulixScreen {
             getScreen(bScreen).dragDrop(imagePath1, imagePath2);
             return null;
         } catch (Exception e) {
-            return findFailedError(e.getMessage());
+            return Utils.getBError(e.getMessage(), e);
         }
     }
 
-    public static boolean exists(BObject bScreen, BString imagePath) {
+    public static Object exists(BObject bScreen, BString imagePath) {
         try {
             Match match = getScreen(bScreen).find(imagePath.toString());
             return match.isValid();
         } catch (Exception e) {
-            return false;
+            return Utils.getBError(e.getMessage(), e);
         }
     }
 
-    public static void keyDown(BObject bScreen, BString keyText) {
-        getScreen(bScreen).keyDown(SikulixKey.getKey(keyText.toString()));
+    public static Object keyDown(BObject bScreen, BString keyText) {
+        try {
+            getScreen(bScreen).keyDown(SikulixKey.getKey(keyText.toString()));
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void keyUp(BObject bScreen, BString keyText) {
-        getScreen(bScreen).keyUp(SikulixKey.getKey(keyText.toString()));
+    public static Object keyUp(BObject bScreen, BString keyText) {
+        try {
+            getScreen(bScreen).keyUp(SikulixKey.getKey(keyText.toString()));
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void keyPress(BObject bScreen, BString keyText) {
-        getScreen(bScreen).type(SikulixKey.getKey(keyText.toString()));
+    public static Object keyPress(BObject bScreen, BString keyText) {
+        try {
+            getScreen(bScreen).type(SikulixKey.getKey(keyText.toString()));
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void type(BObject bScreen, BString value) {
-        getScreen(bScreen).type(value.toString());
+    public static Object type(BObject bScreen, BString value) {
+        try {
+            getScreen(bScreen).type(value.toString());
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static void wheel(BObject bScreen, int direction, int steps) {
-        getScreen(bScreen).wheel(direction, steps);
+    public static Object wheel(BObject bScreen, int direction, int steps) {
+        try {
+            getScreen(bScreen).wheel(direction, steps);
+            return null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static boolean existsText(BObject bScreen, BString text) {
-        Match match = getScreen(bScreen).existsText(text.toString());
-        return match != null;
+    public static Object existsText(BObject bScreen, BString text) {
+        try {
+            Match match = getScreen(bScreen).existsText(text.toString());
+            return match != null;
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getBottomLeftX(BObject bScreen) {
-        Location location = getScreen(bScreen).getBottomLeft();
-        return location.getX();
+    public static Object getBottomLeftX(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getBottomLeft();
+            return location.getX();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getBottomLeftY(BObject bScreen) {
-        Location location = getScreen(bScreen).getBottomLeft();
-        return location.getY();
+    public static Object getBottomLeftY(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getBottomLeft();
+            return location.getY();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getBottomRightX(BObject bScreen) {
-        Location location = getScreen(bScreen).getBottomRight();
-        return location.getX();
+    public static Object getBottomRightX(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getBottomRight();
+            return location.getX();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getBottomRightY(BObject bScreen) {
-        Location location = getScreen(bScreen).getBottomRight();
-        return location.getY();
+    public static Object getBottomRightY(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getBottomRight();
+            return location.getY();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getTopLeftX(BObject bScreen) {
-        Location location = getScreen(bScreen).getTopLeft();
-        return location.getX();
+    public static Object getTopLeftX(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getTopLeft();
+            return location.getX();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getTopLeftY(BObject bScreen) {
-        Location location = getScreen(bScreen).getTopLeft();
-        return location.getY();
+    public static Object getTopLeftY(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getTopLeft();
+            return location.getY();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getTopRightX(BObject bScreen) {
-        Location location = getScreen(bScreen).getTopRight();
-        return location.getX();
+    public static Object getTopRightX(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getTopRight();
+            return location.getX();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getTopRightY(BObject bScreen) {
-        Location location = getScreen(bScreen).getTopRight();
-        return location.getY();
+    public static Object getTopRightY(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getTopRight();
+            return location.getY();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getCenterX(BObject bScreen) {
-        Location location = getScreen(bScreen).getCenter();
-        return location.getX();
+    public static Object getCenterX(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getCenter();
+            return location.getX();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getCenterY(BObject bScreen) {
-        Location location = getScreen(bScreen).getCenter();
-        return location.getY();
+    public static Object getCenterY(BObject bScreen) {
+        try {
+            Location location = getScreen(bScreen).getCenter();
+            return location.getY();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getX(BObject bScreen) {
-        return getScreen(bScreen).getX();
+    public static Object getX(BObject bScreen) {
+        try {
+            return getScreen(bScreen).getX();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getY(BObject bScreen) {
-        return getScreen(bScreen).getY();
+    public static Object getY(BObject bScreen) {
+        try {
+            return getScreen(bScreen).getY();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getW(BObject bScreen) {
-        return getScreen(bScreen).getW();
+    public static Object getW(BObject bScreen) {
+        try {
+            return getScreen(bScreen).getW();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
-    public static int getH(BObject bScreen) {
-        return getScreen(bScreen).getH();
+    public static Object getH(BObject bScreen) {
+        try {
+            return getScreen(bScreen).getH();
+        } catch (Exception e) {
+            return Utils.getBError(e.getMessage(), e);
+        }
     }
 
     public static Object find(BObject bScreen, BString imagePath) {
@@ -175,7 +282,7 @@ public class SikulixScreen {
             Match match = getScreen(bScreen).find(imagePath.toString());
             return getMatchBObject(match);
         } catch (Exception e) {
-            return findFailedError(e.getMessage());
+            return Utils.getBError(e.getMessage(), e);
         }
     }
 
@@ -184,7 +291,7 @@ public class SikulixScreen {
             Match match = getScreen(bScreen).findText(text.toString());
             return getMatchBObject(match);
         } catch (Exception e) {
-            return findFailedError(e.getMessage());
+            return Utils.getBError(e.getMessage(), e);
         }
     }
 
@@ -193,7 +300,7 @@ public class SikulixScreen {
             Iterator<Match> matches = getScreen(bScreen).findAll(imagePath.toString());
             return ValueCreator.createArrayValue(getMatchBObjectArr(matches), getMatchArrayType());
         } catch (Exception e) {
-            return findFailedError(e.getMessage());
+            return Utils.getBError(e.getMessage(), e);
         }
     }
 
@@ -212,11 +319,6 @@ public class SikulixScreen {
     public static ArrayType getMatchArrayType() {
         Type type = TypeCreator.createObjectType(MATCH_OBJECT_TYPE, ModuleUtils.getModule(), 0);
         return TypeCreator.createArrayType(type);
-    }
-
-    private static BError findFailedError(String imagePath) {
-        BString message = StringUtils.fromString("Failed to find element: " + imagePath);
-        return ErrorCreator.createError(ModuleUtils.getModule(), ERROR_TYPE, message, null, null);
     }
 
     private static Screen getScreen(BObject bScreen) {

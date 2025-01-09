@@ -25,6 +25,7 @@ import ballerina/jballerina.java;
 // update workflows ---------------------------------------------------------- done
 // error handling
 // add testing
+// App class
 
 # Represents a rectangular area on a Screen.
 public class Region {
@@ -32,31 +33,39 @@ public class Region {
     # Initializes the `Region` object.
     #
     # + rectangle - The rectangle that defines the region.
-    public isolated function init(Rectangle rectangle) {
-        self.createRegion(rectangle);
+    public isolated function init(Rectangle rectangle) returns Error? {
+        check self.createRegion(rectangle);
     }
-
-    private isolated function createRegion(Rectangle rectangle) = @java:Method {
+    
+    private isolated function createRegion(Rectangle rectangle) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Clicks on the center of the Region.
-    public isolated function click() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function click() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Clicks on the center of the Region twice.
-    public isolated function doubleClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function doubleClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Right clicks on the center of the Region.
-    public isolated function rightClick() = @java:Method {
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function rightClick() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
-    # Drags the mouse from the current location to the center of the Region.
-    public isolated function hover() = @java:Method {
+    # Drags the mouse from the current location to the center of t
+    # 
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.he Region.
+    public isolated function hover() returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
@@ -64,7 +73,7 @@ public class Region {
     #
     # + imagePath1 - The path to the image of the element to be dragged.
     # + imagePath2 - The path to the image of the location to drop the element.
-    # + return - Returns `()` is successful, otherwise returns `Error`.
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
     public isolated function dragDrop(string imagePath1, string imagePath2) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
@@ -72,36 +81,40 @@ public class Region {
     # Checks whether the given image exists in the `Region`.
     #
     # + imagePath - The path to the image to be checked.
-    # + return - Returns `true` if the image exists, otherwise returns `false`.    
-    public isolated function exists(string imagePath) returns boolean = @java:Method {
+    # + return - Returns `boolean` if operation successful, otherwise returns `Error`    
+    public isolated function exists(string imagePath) returns boolean|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Press and hold the given key.
     #
     # + key - The key to be pressed.
-    public isolated function keyDown(Key key) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function keyDown(Key key) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Release the given key.
     #
     # + key - The key to be released.
-    public isolated function keyUp(Key key) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function keyUp(Key key) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Press the given key.
     #
     # + key - The key to be pressed.
-    public isolated function keyPress(Key key) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function keyPress(Key key) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Types the given string.
     #
     # + value - The string to be typed.
-    public isolated function 'type(string value) = @java:Method {
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function 'type(string value) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
@@ -109,7 +122,7 @@ public class Region {
     #
     # + direction - The direction of the scroll. 1 for scrolling down and 0 for scrolling up.
     # + noOfSteps - The number of steps to scroll.
-    # + return - Returns `Error` if an error occurs while scrolling.
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
     public isolated function wheel(int direction, int noOfSteps) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
@@ -117,99 +130,107 @@ public class Region {
     # Checks whether the given text exists in the `Region`.
     #
     # + text - The text to be checked.
-    # + return - Returns `true` if the text exists, otherwise returns `false`.    
-    public isolated function existsText(string text) returns boolean = @java:Method {
+    # + return - Returns `boolean` if operation successful, otherwise returns `Error`.  
+    public isolated function existsText(string text) returns boolean|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the X coordinate of the bottom-left corner of the `Region`.
     #
-    # + return - Returns `int` represents X coordinate of the bottom-left corner.
-    public isolated function getBottomLeftX() returns int = @java:Method {
+    # + return - Returns `int` represents X coordinate of the bottom-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomLeftX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the Y-coordinate of the bottom-left corner of the `Region`.
     #
-    # + return - Returns `int` represents Y-coordinate of the bottom-left corner.
-    public isolated function getBottomLeftY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the bottom-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomLeftY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the X-coordinate of the bottom-right corner of the `Region`.
     #
-    # + return - Returns `int` represents X-coordinate of the bottom-right corner.
-    public isolated function getBottomRightX() returns int = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the bottom-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomRightX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the Y-coordinate of the bottom-right corner of the `Region`.
     #
-    # + return - Returns `int` represents Y-coordinate of the bottom-right corner.
-    public isolated function getBottomRightY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the bottom-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getBottomRightY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the X-coordinate of the top-left corner of the `Region`.
     #
-    # + return - Returns `int` represents X-coordinate of the top-left corner.
-    public isolated function getTopLeftX() returns int = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the top-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopLeftX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the Y-coordinate of the top-left corner of the `Region`.
     #
-    # + return - Returns `int` represents Y-coordinate of the top-left corner.
-    public isolated function getTopLeftY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the top-left corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopLeftY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the X-coordinate of the top-right corner of the `Region`.
     #
-    # + return - Returns `int` represents X-coordinate of the top-right corner.
-    public isolated function getTopRightX() returns int = @java:Method {
+    # + return - Returns `int` represents X-coordinate of the top-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopRightX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the Y-coordinate of the top-right corner of the `Region`.
     #
-    # + return - Returns `int` represents Y-coordinate of the top-right corner.
-    public isolated function getTopRightY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the top-right corner if successful,
+    # otherwise returns `Error`.
+    public isolated function getTopRightY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the X-coordinate of the center of the `Region`.
     #
     # + return - Returns `int` represents X-coordinate of the center.
-    public isolated function getCenterX() returns int = @java:Method {
+    public isolated function getCenterX() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the Y-coordinate of the center of the `Region`.
     #
-    # + return - Returns `int` represents Y-coordinate of the center.
-    public isolated function getCenterY() returns int = @java:Method {
+    # + return - Returns `int` represents Y-coordinate of the center if operation successful, otherwise returns `Error`    
+    public isolated function getCenterY() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the height of the `Region`.  
     #
-    # + return - Returns `int` represents the height of the `Region`.
-    public isolated function getH() returns int = @java:Method {
+    # + return - Returns `int` represents the height of the `Region` if operation successful, otherwise returns `Error`    
+    public isolated function getH() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the width of the `Region`.
     #
-    # + return - Returns `int` represents the width of the `Region`.
-    public isolated function getW() returns int = @java:Method {
+    # + return - Returns `int` represents the width of the `Region` if operation successful, otherwise returns `Error`    
+    public isolated function getW() returns int|Error= @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Returns the text inside the region.
     #
-    # + return - Returns `string` represents the text.
-    public isolated function getText() returns string = @java:Method {
+    # + return - Returns `string` represents the text if operation successful, otherwise returns `Error`    
+    public isolated function getText() returns string|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
