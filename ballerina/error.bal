@@ -14,5 +14,5 @@
 // specific language governing permissions and limitations
 // under the License.
 
-# Represents any error related to the Pipe module.
+# Represents any error related to the Sikulix module.
 public type Error distinct error;

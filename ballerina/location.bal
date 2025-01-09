@@ -1,3 +1,19 @@
+// Copyright (c) 2024, WSO2 LLC. (http://www.wso2.com).
+
+// WSO2 LLC. licenses this file to you under the Apache License,
+// Version 2.0 (the "License"); you may not use this file except
+// in compliance with the License.
+// You may obtain a copy of the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 import ballerina/jballerina.java;
 
 # Represents a location on the screen.
@@ -40,21 +56,21 @@ public class Location {
     } external;
 
     # Returns the x-coordinate of the location.
-    # 
+    #
     # + return - Returns `int` x-coordinate of the location.
     public isolated function getX() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Returns the y-coordinate of the location.
-    # 
+    #
     # + return - Returns `int` y-coordinate of the location.
     public isolated function getY() returns int = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixLocation"
     } external;
 
     # Types the given string at the location.
-    # 
+    #
     # + value - The string to be typed.
     # + return - Returns `Error` if an error occurs while typing, Otherwise returns `()`.
     public isolated function 'type(string value) returns Error? = @java:Method {
@@ -62,7 +78,7 @@ public class Location {
     } external;
 
     # Scrolls the mouse wheel.
-    # 
+    #
     # + direction - The direction of the scroll. 1 for scrolling down and 0 for scrolling up.
     # + noOfSteps - The number of steps to scroll.
     # + return - Returns `Error` if an error occurs while scrolling, Otherwise returns `()`.
