@@ -1,25 +1,28 @@
 import ballerina/jballerina.java;
 
+// remove exists ------------------------------------------------------------- done
+// replace region init arguments to record ----------------------------------- done
+// replace location init arguments to record --------------------------------- done
+// change keys to enum
+// change docs when find -> if multiple elements returns first one
+// update build.gradle for libs instead connectors for both sel and si
+// update workflows for both sel and si
+// error handling
+// add testing
+
 # Represents a rectangular area on a Screen.
 public class Region {
 
     # Initializes the `Region` object.
     #
-    # + x - The x-coordinate of the upper left corner of the region.
-    # + y - The y-coordinate of the upper left corner of the region.
-    # + w - The width of the region.
-    # + h - The height of the region.
-    public isolated function init(int x, int y, int w, int h) {
-        self.createRegion(x, y, w, h);
+    # Represents a rectangular region.
+    # 
+    # + rectangle - The rectangle that defines the region.
+    public isolated function init(Rectangle rectangle) {
+        self.createRegion(rectangle);
     }
 
-    # Creates a new `Region` object.
-    #
-    # + x - The x-coordinate of the upper left corner of the region.
-    # + y - The y-coordinate of the upper left corner of the region.
-    # + w - The width of the region.
-    # + h - The height of the region.
-    private isolated function createRegion(int x, int y, int w, int h) = @java:Method {
+    private isolated function createRegion(Rectangle rectangle) = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 

@@ -8,6 +8,7 @@ import io.ballerina.runtime.api.types.ArrayType;
 import io.ballerina.runtime.api.types.Type;
 import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BError;
+import io.ballerina.runtime.api.values.BMap;
 import io.ballerina.runtime.api.values.BObject;
 import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
@@ -30,7 +31,11 @@ public class SikulixRegion {
     public static final String MATCH_OBJECT = "nativeMatchObject";
     private static final Logger log = LoggerFactory.getLogger(SikulixRegion.class);
 
-    public static void createRegion(BObject bRegion, int x, int y, int w, int h) {
+    public static void createRegion(BObject bRegion, BMap<BString, Object> rectangle) {
+        int x = Math.toIntExact(rectangle.getIntValue(StringUtils.fromString("topLeftX")));
+        int y = Math.toIntExact(rectangle.getIntValue(StringUtils.fromString("topLeftY")));
+        int w = Math.toIntExact(rectangle.getIntValue(StringUtils.fromString("width")));
+        int h = Math.toIntExact(rectangle.getIntValue(StringUtils.fromString("height")));
         bRegion.addNativeData(REGION_OBJECT, new Region(x, y, w, h));
     }
 
