@@ -66,14 +66,21 @@ public class Region {
     # Press and hold the given key.
     # 
     # + key - The key to be pressed.
-    public isolated function keyDown(string key) = @java:Method {
+    public isolated function keyDown(Key key) = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 
     # Release the given key.
     # 
     # + key - The key to be released.
-    public isolated function keyUp(string key) = @java:Method {
+    public isolated function keyUp(Key key) = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixRegion"
+    } external;
+
+    # Press the given key.
+    # 
+    # + key - The key to be pressed.
+    public isolated function keyPress(Key key) = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 

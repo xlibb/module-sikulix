@@ -42,25 +42,24 @@ public class Screen {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
-    # Checks whether the given image exists in the `Screen`.
-    # 
-    # + imagePath - The path to the image to be checked.
-    # + return - Returns `true` if the image exists, otherwise returns `false`.
-    public isolated function exists(string imagePath) returns boolean = @java:Method {
-        'class: "io.ballerina.lib.sikulix.SikulixScreen"
-    } external;
-
     # Press and hold the given key.
     # 
     # + key - The key to be pressed.
-    public isolated function keyDown(string key) = @java:Method {
+    public isolated function keyDown(Key key) = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Release the given key.
     # 
     # + key - The key to be released.
-    public isolated function keyUp(string key) = @java:Method {
+    public isolated function keyUp(Key key) = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixScreen"
+    } external;
+
+    # Press the given key.
+    # 
+    # + key - The key to be pressed.
+    public isolated function keyPress(Key key) = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
@@ -78,6 +77,14 @@ public class Screen {
     # + return - Returns `Error` if an error occurs while scrolling.
     public isolated function wheel(int direction, int noOfSteps) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
+    } external;
+
+    # Checks whether the given image exists in the `Screen`.
+    # 
+    # + imagePath - The path to the image to be checked.
+    # + return - Returns `true` if the image exists, otherwise returns `false`.
+    public isolated function exists(string imagePath) returns boolean = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Checks whether the given text exists in the `Screen`.
@@ -155,6 +162,22 @@ public class Screen {
     # 
     # + return - Returns `int` represents Y-coordinate of the center.
     public isolated function getCenterY() returns int = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixScreen"
+    } external;
+
+    # Returns the `Match` object similar to an image within the `Screen`.
+    # 
+    # + imagePath - The path to the image to be found.
+    # + return - Returns `Match` object if the image found, otherwise returns `Error`.
+    public isolated function find(string imagePath) returns Match|Error = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixScreen"
+    } external;
+
+    # Returns the `Match` object similar to a text within the `Screen`.
+    # 
+    # + text - The text to be found.
+    # + return - Returns `Match` object if the text found, otherwise returns `Error`.
+    public isolated function findText(string text) returns Match|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 

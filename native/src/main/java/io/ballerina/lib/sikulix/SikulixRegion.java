@@ -14,8 +14,6 @@ import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,11 +23,8 @@ public class SikulixRegion {
 
     public static final String REGION_OBJECT = "nativeRegionObject";
     public static final String ERROR_TYPE = "Error";
-    public static final String LOCATION_OBJECT_TYPE = "Location";
-    public static final String LOCATION_OBJECT = "nativeLocationObject";
     public static final String MATCH_OBJECT_TYPE = "Match";
     public static final String MATCH_OBJECT = "nativeMatchObject";
-    private static final Logger log = LoggerFactory.getLogger(SikulixRegion.class);
 
     public static void createRegion(BObject bRegion, BMap<BString, Object> rectangle) {
         int x = Math.toIntExact(rectangle.getIntValue(StringUtils.fromString("topLeftX")));
@@ -69,12 +64,16 @@ public class SikulixRegion {
         return match != null;
     }
 
-    public static void keyDown(BObject bRegion, BString key) {
-        getRegion(bRegion).keyDown(key.toString());
+    public static void keyDown(BObject bRegion, BString keyText) {
+        getRegion(bRegion).keyDown(SikulixKey.getKey(keyText.toString()));
     }
 
-    public static void keyUp(BObject bRegion, BString key) {
-        getRegion(bRegion).keyUp(key.toString());
+    public static void keyUp(BObject bRegion, BString keyText) {
+        getRegion(bRegion).keyUp(SikulixKey.getKey(keyText.toString()));
+    }
+
+    public static void keyPress(BObject bRegion, BString keyText) {
+        getRegion(bRegion).type(SikulixKey.getKey(keyText.toString()));
     }
 
     public static void type(BObject bRegion, BString value) {

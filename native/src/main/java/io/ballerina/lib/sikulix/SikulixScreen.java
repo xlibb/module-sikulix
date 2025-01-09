@@ -22,8 +22,6 @@ public class SikulixScreen {
 
     public static final String SCREEN_OBJECT = "nativeScreenObject";
     public static final String ERROR_TYPE = "Error";
-    public static final String LOCATION_OBJECT_TYPE = "Location";
-    public static final String LOCATION_OBJECT = "nativeLocationObject";
     public static final String MATCH_OBJECT_TYPE = "Match";
     public static final String MATCH_OBJECT = "nativeMatchObject";
 
@@ -65,12 +63,16 @@ public class SikulixScreen {
         }
     }
 
-    public static void keyDown(BObject bScreen, BString key) {
-        getScreen(bScreen).keyDown(key.toString());
+    public static void keyDown(BObject bScreen, BString keyText) {
+        getScreen(bScreen).keyDown(SikulixKey.getKey(keyText.toString()));
     }
 
-    public static void keyUp(BObject bScreen, BString key) {
-        getScreen(bScreen).keyUp(key.toString());
+    public static void keyUp(BObject bScreen, BString keyText) {
+        getScreen(bScreen).keyUp(SikulixKey.getKey(keyText.toString()));
+    }
+
+    public static void keyPress(BObject bScreen, BString keyText) {
+        getScreen(bScreen).type(SikulixKey.getKey(keyText.toString()));
     }
 
     public static void type(BObject bScreen, BString value) {
@@ -186,7 +188,7 @@ public class SikulixScreen {
         }
         BObject[] matchArr = new BObject[matchList.size()];
         for (int i = 0; i < matchList.size(); i++) {
-            matchArr[i]  = getMatchBObject(matchList.get(i));
+            matchArr[i] = getMatchBObject(matchList.get(i));
         }
         return matchArr;
     }
