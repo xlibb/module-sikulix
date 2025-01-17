@@ -105,7 +105,7 @@ public class Screen {
     # + noOfSteps - The number of steps to scroll.
     # + return - Returns `()` if operation successful, otherwise returns `Error`.
     public isolated function wheel(int direction, int noOfSteps) returns Error? = @java:Method {
-        'class: "io.ballerina.lib.sikulix.SikulixRegion"
+        'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
     # Checks whether the given image exists in the `Screen`.

@@ -16,17 +16,6 @@
 
 import ballerina/jballerina.java;
 
-// remove exists ------------------------------------------------------------- done
-// replace region init arguments to record ----------------------------------- done
-// replace location init arguments to record --------------------------------- done
-// change keys to enum ------------------------------------------------------- done
-// change docs when find -> if multiple elements returns first one
-// update build.gradle for libs instead connectors --------------------------- done
-// update workflows ---------------------------------------------------------- done
-// error handling
-// add testing
-// App class
-
 # Represents a rectangular area on a Screen.
 public class Region {
 

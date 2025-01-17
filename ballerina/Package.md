@@ -6,40 +6,16 @@ This module automates desktop applications across Windows, Mac and Linux operati
 
 SikuliX enables image-based automation via screenshots, supports precise coordinate-based interactions, and offers OCR capabilities for text recognition.
 
-### Class `App`
-
-In SikuliX, the App class is used to interact with desktop applications. It allows you to launch, bring focus to, and manage the lifecycle of applications. 
-
-```ballerina
-import xlibb/sikulix.script as sikulix;
-
-public function main returns error? {
-    sikulix:App calc = sikulix:newApp2("C:/Windows/System32/calc.exe"); // Creates calculator app instance
-    _ = calc.open(); // Opens calculator
-    _ = calc.focus(); // Brings calculator to the front
-    _ = calc.close(); // Closes calculator
-}
-```
-
 ### Class `Screen`
 
-The Screen instance represents the entire monitor which operates on the entire visible screen area. `Screen` extends class [`Region`](#class-region).
+The Screen instance represents the entire monitor which operates on the entire visible screen area.
 
 ```ballerina
-import xlibb/sikulix.script as sikulix;
+import xlibb/sikulix;
 
-public function main returns error? {
-    sikulix:Screen screen = sikulix:newScreen1(); // Initialize a new Sikuli screen object to interact with the desktop.
-
-    sikulix:Match submitButton = check screen.find1("button.png"); // Locate the "button.png" element on the screen and return its Match object.
-
-    _ = check screen.click4("button.png"); // Click on the element represented by "button.png".
-    _ = check screen.type7("textinput.png", "Hello word"); // Focus on the "textinput.png" element and type "Hello word".
-    _ = check screen.wheel4("dropdown.png", 1, 2); // Scroll down on the "dropdown.png" element with 2 steps in the forward direction.
-    _ = check screen.rightClick4("icon1.png"); // Perform a right-click on the element represented by "icon1.png".
-    _ = check screen.doubleClick4("icon2.png"); // Perform a double-click on the element represented by "icon2.png".
-    _ = check screen.dragDrop4("icon3.png", "icon4.png"); // Drag the element represented by "icon3.png" and drop it onto "icon4.png".
-    _ = check screen.hover3("icon5.png"); // Hover on the element represented by "icon5.png".
+public function main() returns error? {
+    sikulix:Screen screen = check new(); // Initialize a new Sikuli screen object to interact
+    _ = check screen.click(); // Click on the center of the screen.
 }
 ```
 
@@ -55,7 +31,7 @@ A Region is a rectangular area on a Screen, and is defined by,
 You can use `find()`, to search a given image/text within the Region. If this Visual is found in the Region, It returns a [`Match`](#class-match) object.
 
 ```ballerina
-import xlibb/sikulix.script as sikulix;
+import xlibb/sikulix;
 
 public function main returns error? {
     int topLeftX = 300;
@@ -63,9 +39,8 @@ public function main returns error? {
     int height = 300;
     int width = 600;
 
-    sikulix:Region someRegion = sikulix:newRegion2(topLeftX, topLeftY, height, width);
-    sikulix:Match icon = check someRegion.find1("image.png");
-    _ = icon.click();
+    sikulix:Region someRegion = check new ({topLeftX, topLeftY, height, width});
+    _ = check someRegion.click(); // Click on the center of the region.
 }
 ```
 
@@ -74,96 +49,34 @@ public function main returns error? {
 This class is to handle single points on the screen directly by its position (x, y).
 
 ```ballerina
-import xlibb/sikulix.script as sikulix;
+import xlibb/sikulix;
 
 public function main returns error? {
     int x = 300;
     int y = 400;
-    sikulix:Location someLocation = sikulix:newLocation2(x, y);
-    _ = someLocation.click();
-}
-```
-
-### Class `Pattern`
-
-A Pattern represents a visual element that SikuliX searches for on the screen. It is primarily used as a search template with additional features like similarity settings and offsets.
-
-The `similar()` method is used to set the similarity threshold for image matching. SikuliX searches for elements on the screen by comparing the provided image or pattern with what is displayed on the screen. The similarity value determines how closely the screen element must match the pattern to be considered a valid match. The value ranges from 0.0 (no similarity required) to 1.0 (perfect match).
-
-The `targetOffset()` method adjusts the point of interaction relative to the center of the matched region. By default, SikuliX performs actions (e.g., clicks) at the center of the matched element. With a pattern object, you can define a different click point relative to the center using `targetOffset()`.
-
-```ballerina
-import xlibb/sikulix.script as sikulix;
-
-public function main returns error? {
-    sikulix:Screen screen = sikulix:newScreen1();
-    sikulix:Pattern pattern = sikulix:newPattern6("image.png").similar(0.5).targetOffset(10, 10);
-    _ = check screen.click2(pattern);
+    sikulix:Location someLocation = check new ({x, y});
+    check someLocation.click();
 }
 ```
 
 ### Class `Match`
 
-Match represents the result of a successful find operation. class   `Match` extends class `Region`. It provides coordinates (x, y), dimensions (width, height), and used for further actions (e.g., clicking, dragging, or analyzing the match region).
+Match represents the result of a successful find operation. It used for further actions (e.g., clicking, or analyzing the match region).
 
-If the find operation fails, it returns an error `FindFailed`.
+If the find operation fails, it returns an error `FindFailedError`.
 
 ```ballerina
-import xlibb/sikulix.script as sikulix;
+import xlibb/sikulix;
 
 public function main returns error? {
-    sikulix:Screen screen = sikulix:newScreen1();
+    sikulix:Screen screen = check new ();
     // Locate the element represented by "image.png" 
     // on the screen and store the match details.
-    sikulix:Match|sikulix:FindFailed myMatch = screen.find1("image.png"); 
-
-    if myMatch is sikulix:FindFailed {
-        io:println("The element not found in the screen.");
-    } else {
-        // Click at a location offset by 200 pixels to the right (X-axis) and 100 pixels down (Y-axis) 
-        // from the top-left corner of the matched image.
-        _ = check screen.click2(sikulix:newLocation2(myMatch.getX() + 200, myMatch.getY() + 100)); 
-    }
+    sikulix:Match myMatch = check screen.find("image.png");
+    check myMatch.click()
 }
 ```
 
-### Class `Key`
-The methods supporting the use of special keys are `type()` `keyDown()` and `keyUp()`.
-
-```ballerina
-import xlibb/sikulix.script as sikulix;
-
-public function main() returns sikulix:FindFailed? {
-
-    sikulix:Screen screen = sikulix:newScreen1();
-    _ = screen.type6("inputfield.png", "Hello world\t"); // Type "Hello world" into an input field represented by "image.png" and focus next input field.
-    _ = screen.type4("Ballerina"); // Type the text "Ballerina" at the current cursor location.
-    _ = check screen.'type(sikulix:newLocation2(300, 600), "Hello world"); // Type "Hello world" into an input field or perform an action, using x, y coordinates as a reference for location.
-    _ = screen.type4(sikulix:Key_getENTER()); // Pressing the ENTER key.
-    screen.keyDown2(sikulix:Key_getCTRL()); // Press and hold the CTRL key.
-    _ = screen.type4("a"); // pressing the "A" key (e.g., to select all text).
-    screen.keyUp3(sikulix:Key_getCTRL()); // Release the CTRL key.
-
-}
-```
-
-### Working with text and using OCR features
-
-```ballerina
-import xlibb/sikulix.script as sikulix;
-
-public function main() returns sikulix:FindFailed? {
-
-    sikulix:Region r = sikulix:newRegion2(100, 100, 400, 200);
-    string text1 = r.text(); // Extract and store the text content from the defined region.
-
-    sikulix:Screen screen = sikulix:newScreen1();
-    sikulix:Match myMatch = check screen.find1("image.png");
-    string text2 = myMatch.getText(); // Extract and store the text content from the region where the image "image.png" was found.
-    sikulix:Match textMatch2 = check screen.findText("ballerina"); // Search for the text "ballerina" on the screen and store the matching region if found.
-
-}
-```
 ### Sikulix IDE 
 
 To use images with the features of SikuliX like click(someImage), you need to store these images as image files in the PNG format (someImage.png) somewhere on the file system or somewhere in the internet.

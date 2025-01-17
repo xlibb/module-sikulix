@@ -32,7 +32,7 @@ cacheDirs=$(ls -d $BAL_CENTRAL_DIR/cache-* 2>/dev/null) || true
 for dir in "${cacheDirs[@]}"; do
   [ -d "$dir" ] && rm -r "$dir"
 done
-echo "Successfully cleaned the cache directories"
+echo "successfuly cleaned the cache directories"
 
 # Create the package directory in the central repository, this will not be present if no modules are pulled
 mkdir -p "$BAL_CENTRAL_DIR/bala/ballerinax/$BAL_PACKAGE_NAME"
@@ -42,7 +42,7 @@ BAL_DESTINATION_DIR="$HOME/.ballerina/repositories/central.ballerina.io/bala/bal
 BAL_SOURCE_DIR="$HOME/.ballerina/repositories/local/bala/ballerinax/$BAL_PACKAGE_NAME"
 [ -d "$BAL_DESTINATION_DIR" ] && rm -r "$BAL_DESTINATION_DIR"
 [ -d "$BAL_SOURCE_DIR" ] && cp -r "$BAL_SOURCE_DIR" "$BAL_DESTINATION_DIR"
-echo "Successfully updated the local central repositories"
+echo "successfuly updated the local central repositories"
 
 echo "$BAL_DESTINATION_DIR"
 echo "$BAL_SOURCE_DIR"

@@ -18,4 +18,4 @@
 public type Error distinct error;
 
 # Represents an error that occurs when a find operation fails.
-public type FindFailedError distinct error;
+public type FindFailedError distinct Error;
