@@ -17,7 +17,7 @@
 import ballerina/jballerina.java;
 
 # Represents represents the entire monitor which operates on the entire visible screen area.
-public class Screen {
+public isolated class Screen {
 
     # Initializes the `Screen` object.
     # 

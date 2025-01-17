@@ -1,10 +1,9 @@
-# Automating the Filling of Student Application Form.
+# Automating the filling of student application form.
 
 ## Overview
 This guide demonstrates automating the process of filling out student application form [A desktop application] using the Ballerina Sikuli module.
 
 ## Implementation
-For this task, we use sample JSON data available in [this file](./modules/resources/data.json). The example project showcases how to automate the data entry process by populating this information into [this desktop application](./student_application.exe).
 
 The example project automates data entry by retrieving student information from a [JSON file](./modules/resources/data.json) and populating it into a [desktop application](./student_app.jar).
 

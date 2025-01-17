@@ -17,7 +17,7 @@
 import ballerina/jballerina.java;
 
 # Represents a location on the screen.
-public class Location {
+public isolated class Location {
 
     # Initializes the Location object with the given x and y coordinates.
     # + point - The coordinates of the location.

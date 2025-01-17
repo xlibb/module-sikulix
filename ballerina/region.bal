@@ -17,7 +17,7 @@
 import ballerina/jballerina.java;
 
 # Represents a rectangular area on a Screen.
-public class Region {
+public isolated class Region {
 
     # Initializes the `Region` object.
     #

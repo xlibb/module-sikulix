@@ -17,7 +17,7 @@
 import ballerina/jballerina.java;
 
 # Represents the result of a successful find operation.
-public class Match {
+public isolated class Match {
 
     # Clicks on the element represents by `Match` object.
     # 
