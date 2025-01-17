@@ -48,3 +48,5 @@ build
 
 # Ignore Docker env file
 **/docker.env
+
+!examples/student_application_form_filling/student_app.jar

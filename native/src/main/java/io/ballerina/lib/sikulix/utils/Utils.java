@@ -29,7 +29,7 @@ public class Utils {
         if (e instanceof FindFailed) {
             BError cause = ErrorCreator.createError(e);
             return ErrorCreator.createError(ModuleUtils.getModule(), FIND_FAILED_ERROR_TYPE,
-                    StringUtils.fromString(message), cause, null);
+                    StringUtils.fromString("Find Failed: " + message), cause, null);
         }
         return ErrorCreator.createError(ModuleUtils.getModule(), ERROR_TYPE,
                 StringUtils.fromString(message), null, null);
