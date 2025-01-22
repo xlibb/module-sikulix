@@ -1,4 +1,4 @@
-# module-sikulix
+# Ballerina SikuliX Library  
 This repository contains the source code of the Ballerina sikulix library package
 
 [![Build](https://github.com/xlibb/module-sikulix/actions/workflows/ci.yml/badge.svg)](https://github.com/xlibb/module-sikulix/actions/workflows/ci.yml)
