@@ -5,7 +5,7 @@ name = "sikulix"
 version = "@toml.version@"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
-keywords = [] # TODO: Add keywords
+keywords = ["sikulix"] 
 # icon = "icon.png" # TODO: Add icon
 repository = "https://github.com/xlibb/module-sikulix"
 
@@ -18,8 +18,8 @@ graalvmCompatible = true
 [[platform.java17.dependency]]
 groupId = "io.ballerina.lib.sikulix"
 artifactId = "sikulix-native"
-version = "0.1.0"
-path = "../native/build/libs/sikulix-native-0.1.0-SNAPSHOT.jar"
+version = "@toml.version@"
+path = "../native/build/libs/sikulix-native-@project.version@.jar"
 
 [[platform.java17.dependency]]
 groupId = "com.sikulix"
@@ -445,4 +445,3 @@ version = "1.7.28"
 groupId = "net.sf.py4j"
 artifactId = "py4j"
 version = "0.10.9.1"
-

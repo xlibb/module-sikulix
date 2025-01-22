@@ -72,7 +72,7 @@ public function main returns error? {
     sikulix:Screen screen = check new ();
     // Locate the element represented by "image.png" 
     // on the screen and store the match details.
-    sikulix:Match myMatch = check screen.find("image.png");
+    sikulix:Match myMatch = check screen.find("absolute/path/to/folder/image.png");
     check myMatch.click()
 }
 ```
