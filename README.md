@@ -1,9 +1,8 @@
 # Ballerina SikuliX Library  
 This repository contains the source code of the Ballerina sikulix library package
 
-[![Build](https://github.com/xlibb/module-sikulix/actions/workflows/ci.yml/badge.svg)](https://github.com/xlibb/module-sikulix/actions/workflows/ci.yml)
+[![Build](https://github.com/xlibb/module-sikulix/actions/workflows/build-timestamped-master.yml/badge.svg)](https://github.com/xlibb/module-sikulix/actions/workflows/build-timestamped-master.yml)
 [![Trivy](https://github.com/xlibb/module-sikulix/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/xlibb/module-sikulix/actions/workflows/trivy-scan.yml)
-[![GraalVM Check](https://github.com/xlibb/module-sikulix/actions/workflows/build-with-bal-test-graalvm.yml/badge.svg)](https://github.com/xlibb/module-sikulix/actions/workflows/build-with-bal-test-graalvm.yml)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/xlibb/module-sikulix.svg)](https://github.com/xlibb/module-sikulix/commits/master)
 [![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/sikulix.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%sikulix)
 
