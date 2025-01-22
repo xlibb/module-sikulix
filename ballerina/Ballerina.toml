@@ -5,8 +5,8 @@ name = "sikulix"
 version = "0.1.0"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
-keywords = [] # TODO: Add keywords
-# icon = "icon.png" # TODO: Add icon
+keywords = ["sikulix"] 
+icon = "icon.png"
 repository = "https://github.com/xlibb/module-sikulix"
 
 [build-options]
@@ -445,4 +445,3 @@ version = "1.7.28"
 groupId = "net.sf.py4j"
 artifactId = "py4j"
 version = "0.10.9.1"
-
