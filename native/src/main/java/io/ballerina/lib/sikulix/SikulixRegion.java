@@ -35,7 +35,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class SikulixRegion {
-
     public static final String REGION_OBJECT = "nativeRegionObject";
     public static final String ERROR_TYPE = "Error";
     public static final String MATCH_OBJECT_TYPE = "Match";
