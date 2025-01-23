@@ -1,5 +1,6 @@
 # Ballerina SikuliX Library  
-This repository contains the source code of the Ballerina sikulix library package
+
+This repository contains the source code of the Ballerina sikulix library package. This module automates desktop applications across Windows, Mac and Linux operating systems using image based and coordinated based recognition.
 
 [![Build](https://github.com/xlibb/module-sikulix/actions/workflows/build-timestamped-master.yml/badge.svg)](https://github.com/xlibb/module-sikulix/actions/workflows/build-timestamped-master.yml)
 [![Trivy](https://github.com/xlibb/module-sikulix/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/xlibb/module-sikulix/actions/workflows/trivy-scan.yml)
