@@ -6,9 +6,3 @@ distribution = "2201.10.2"
 
 [build-options]
 observabilityIncluded = true
-
-[[dependency]]
-org = "xlibb"
-name = "sikulix"
-version = "0.1.0"
-repository = "local"

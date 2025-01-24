@@ -35,7 +35,7 @@ A Region is a rectangular area on a Screen, and is defined by,
 1. Its upper left corner (x, y) being the pixel with this offset relative to the upper left corner of the screen (usually (0, 0) ) and
 2. Its dimension (w, h) as its width and height in pixels.
 
-`Region` is More efficient than `Screen` because `Region` limits searches to a smaller area, where `Screen` searches in entire screen. `Region` is useful when you know the location of the target or want to focus on a specific part of the screen.
+`Region` is more efficient than `Screen` because `Region` limits searches to a smaller area, where `Screen` searches in entire screen. `Region` is useful when you know the location of the target or want to focus on a specific part of the screen.
 
 You can use `find()`, to search a given image/text within the Region. If this Visual is found in the Region, It returns a [`Match`](#class-match) object.
 
