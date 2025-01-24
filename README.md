@@ -24,7 +24,7 @@ import xlibb/sikulix;
 
 public function main() returns error? {
     sikulix:Screen screen = check new(); // Initialize a new Sikuli screen object to interact
-    _ = check screen.click(); // Click on the center of the screen.
+    check screen.click(); // Click on the center of the screen.
 }
 ```
 
@@ -49,7 +49,7 @@ public function main returns error? {
     int width = 600;
 
     sikulix:Region someRegion = check new ({topLeftX, topLeftY, height, width});
-    _ = check someRegion.click(); // Click on the center of the region.
+    check someRegion.click(); // Click on the center of the region.
 }
 ```
 
