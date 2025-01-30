@@ -16,13 +16,13 @@ modules = [
 ]
 
 [[package]]
-org = "xlibb"
+org = "wso2"
 name = "sikulix"
 version = "0.1.0"
 dependencies = [
 	{org = "ballerina", name = "jballerina.java"}
 ]
 modules = [
-	{org = "xlibb", packageName = "sikulix", moduleName = "sikulix"}
+	{org = "wso2", packageName = "sikulix", moduleName = "sikulix"}
 ]
 
