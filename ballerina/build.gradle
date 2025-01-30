@@ -63,6 +63,12 @@ task updateTomlFiles {
         def newBallerinaToml = ballerinaTomlFilePlaceHolder.text.replace("@project.version@", project.version)
         newBallerinaToml = newBallerinaToml.replace("@toml.version@", tomlVersion)
         newBallerinaToml = newBallerinaToml.replace("@sikulix.version@", project.sikulixVersion)
+        newBallerinaToml = newBallerinaToml.replace("@opencv.version@", project.openCvVersion)
+        newBallerinaToml = newBallerinaToml.replace("@jna.version@", project.jnaVersion)
+        newBallerinaToml = newBallerinaToml.replace("@tess4j.version@", project.tess4jVersion)
+        newBallerinaToml = newBallerinaToml.replace("@imageio.version@", project.imageIOVersion)
+        newBallerinaToml = newBallerinaToml.replace("@commonsio.version@", project.commonsIOVersion)
+        newBallerinaToml = newBallerinaToml.replace("@lept4j.version@", project.lept4jVersion)
         ballerinaTomlFile.text = newBallerinaToml
     }
 }

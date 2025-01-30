@@ -87,7 +87,7 @@ Go to the [SikuliX download page](https://launchpad.net/sikuli/+download) and do
 
 The IDE is only available as jar-file, that can be double-clicked to start it, usage in a command window: `java -jar <path-to>/sikulix.jar`
 
-> To use the SikuliX IDE you need a valid Java runtime installation of at least version 8 (OpenJDK or Oracle JRE/JDK).
+> **Note:** To use the SikuliX IDE you need a valid Java runtime installation of at least version 8 (OpenJDK or Oracle JRE/JDK).
 
 - Use `Take Screenshot` option to capture screenshots. 
 - Use `Region` option to find x, y, w, h properties of a region.
@@ -96,13 +96,13 @@ The IDE is only available as jar-file, that can be double-clicked to start it, u
 
 Save the screenshot images in a directory, preferably within your project folder, and reference these images and coordinate points in your automation code.
  
-### Notes
+### Cautionary Notes
 
-> **Real Screen needed - The system running SikuliX scripts must have a real screen connected.**
+* Real Screen needed - The system running SikuliX scripts must have a real screen connected.
 
-> **While running SikuliX scripts, usually one cannot work on this system in parallel, not even on another monitor, since normally SikuliX will "use" mouse and/or keyboard and watches the screen according to the running SikuliX workflow.**
+* While running SikuliX scripts, usually one cannot work on this system in parallel, not even on another monitor, since normally SikuliX will "use" mouse and/or keyboard and watches the screen according to the running SikuliX workflow.
 
-> **SikuliX relies on image-based automation, which uses pixel-perfect image matching to interact with the user interface. If the screen resolution or scaling differs between machines, the script may fail because the images captured on one machine may not match the UI elements on another machine. To avoid script failures, Ensure both machines have the same screen resolution and scaling. If this is not possible, capture new screenshots on other machine.**
+* SikuliX relies on image-based automation, which uses pixel-perfect image matching to interact with the user interface. If the screen resolution or scaling differs between machines, the script may fail because the images captured on one machine may not match the UI elements on another machine. To avoid script failures, Ensure both machines have the same screen resolution and scaling. If this is not possible, capture new screenshots on other machine.
 
 ## Examples
 

@@ -22,7 +22,7 @@ public isolated class Location {
     # Initializes the Location object with the given x and y coordinates.
     # + point - The coordinates of the location.
     # + return - Returns `()` if operation successful, otherwise returns `Error`.
-    public isolated function init(Point point) returns Error? {
+    public isolated function init(*Point point) returns Error? {
         check self.createLocation(point);
     }
 

@@ -36,14 +36,19 @@ public function main() returns error? {
     sikulix:Screen screen = check new ();
 
     // Enter details
-    check screen.'type(data.fullName + "\t");
-    check screen.'type(data.nameWithInitials + "\t");
-    check screen.'type(data.dob + "\t");
-    check screen.'type(data.age + "\t");
+    check screen.'type(data.fullName);
+    check screen.keyPress(sikulix:TAB);
+    check screen.'type(data.nameWithInitials);
+    check screen.keyPress(sikulix:TAB);
+    check screen.'type(data.dob);
+    check screen.keyPress(sikulix:TAB);
+    check screen.'type(data.age);
+    check screen.keyPress(sikulix:TAB);
     check screen.'type(data.nationality);
-    check scrollToBottom(screen);
     check (check screen.find(string `${imagespath}/${data.gender}.png`)).click();
-    check (check screen.find(string `${imagespath}/address.png`)).'type(data.address + "\t");
+    check scrollToBottom(screen);
+    check (check screen.find(string `${imagespath}/address.png`)).'type(data.address);
+    check screen.keyPress(sikulix:TAB);
     check screen.'type(data.mobile);
     sikulix:Match districtMatch = check screen.find(imagespath + "/district.png"); 
     check districtMatch.click();
@@ -65,16 +70,20 @@ public function main() returns error? {
         count = count + 1;
     }
     check screen.keyPress(sikulix:ENTER);
-    check screen.'type("\t" + data.gramaSevaka + "\t");
-    check screen.'type((data.nic ?: "") + "\t");
+    check screen.'type("\t" + data.gramaSevaka);
+    check screen.keyPress(sikulix:TAB);
+    check screen.'type(data.nic ?: "");
+    check screen.keyPress(sikulix:TAB);
     check screen.'type(data.passport ?: "");
+
+    // Submit the form
     check (check screen.find(string `${imagespath}/finish.png`)).click();
 
     io:println("Data entered successsfully!");
 }
 
 function scrollToBottom(sikulix:Screen screen) returns sikulix:Error? {
-    sikulix:Match|sikulix:Error nextBtn = screen.find(string `${imagespath}/next.png`);
+    sikulix:Match|sikulix:Error nextBtn = screen.find(string `${imagespath}/finish.png`);
     while nextBtn is sikulix:FindFailedError { 
         check screen.wheel(1, 3);
         nextBtn = screen.find(string `${imagespath}/finish.png`);

@@ -24,9 +24,13 @@ import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
 import org.sikuli.script.Screen;
 
+/**
+ * Provide APIs to interact with a single point in the screen.
+ *
+ * @since 0.1.0
+ */
 public class SikulixLocation {
-    public static final String LOCATION_OBJECT = "nativeLocationObject";
-    public static final String ERROR_TYPE = "Error";
+    private static final String LOCATION_OBJECT = "nativeLocationObject";
 
     public static Object createLocation(BObject bLocation, BMap<BString, Object> point) {
         try {
@@ -35,7 +39,7 @@ public class SikulixLocation {
             bLocation.addNativeData(LOCATION_OBJECT, new Location(x, y));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -44,7 +48,7 @@ public class SikulixLocation {
             getLocation(bLocation).click();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -53,7 +57,7 @@ public class SikulixLocation {
             getLocation(bLocation).doubleClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -62,7 +66,7 @@ public class SikulixLocation {
             getLocation(bLocation).rightClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -71,7 +75,7 @@ public class SikulixLocation {
             getLocation(bLocation).hover();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -79,7 +83,7 @@ public class SikulixLocation {
         try {
             return getLocation(bLocation).getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -87,7 +91,7 @@ public class SikulixLocation {
         try {
             return getLocation(bLocation).getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -97,7 +101,7 @@ public class SikulixLocation {
             screen.type(getLocation(bLocation), value.toString());
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -107,11 +111,11 @@ public class SikulixLocation {
             screen.wheel(getLocation(bLocation), direction, noOfSteps);
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
-    private static Location getLocation(BObject bLocation) {
+    public static Location getLocation(BObject bLocation) {
         return (Location) bLocation.getNativeData(LOCATION_OBJECT);
     }
 

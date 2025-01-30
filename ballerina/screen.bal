@@ -60,10 +60,19 @@ public isolated class Screen {
 
     # Drags an element from one location to another inside the corresponding `Screen`.
     #
-    # + imagePath1 - The path to the image of the element to be dragged.
-    # + imagePath2 - The path to the image of the location to drop the element.
+    # + sourceImagePath - The path to the image of the element to be dragged.
+    # + destinationImagePath - The path to the image of the location to drop the element.
     # + return - Returns `()` if operation successful, otherwise returns `Error`.
-    public isolated function dragDrop(string imagePath1, string imagePath2) returns Error? = @java:Method {
+    public isolated function dragDropByImage(string sourceImagePath, string destinationImagePath) returns Error? = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixScreen"
+    } external;
+
+    # Drags an element from one location to another inside the corresponding `Screen`.
+    #
+    # + sourceLocation - The location of the element to be dragged.
+    # + destinationLocation - The location of the location to drop the element.
+    # + return - Returns `()` if operation successful, otherwise returns `Error`.
+    public isolated function dragDropByLocation(Location sourceLocation, Location destinationLocation) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
@@ -211,6 +220,15 @@ public isolated class Screen {
     public isolated function find(string imagePath) returns Match|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
+    
+    # Returns an array of `Match` objects similar to image within the `Screen`.
+    #
+    # + imagePath - The path to the image to be found.
+    # + return - Returns an array of `Match` objects if the image found, otherwise returns `Error`.
+    public isolated function findAll(string imagePath) returns Match[]|Error = @java:Method {
+        'class: "io.ballerina.lib.sikulix.SikulixScreen"
+    } external;
+
 
     # Returns the `Match` object similar to a text within the `Screen`.
     #
@@ -220,11 +238,11 @@ public isolated class Screen {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
-    # Returns an array of `Match` objects similar to image within the `Screen`.
+    # Returns an array of `Match` similar to a text within the `Screen`.
     #
-    # + imagePath - The path to the image to be found.
-    # + return - Returns an array of `Match` objects if the image found, otherwise returns `Error`.
-    public isolated function findAll(string imagePath) returns Match[]|Error = @java:Method {
+    # + text - The text to be found.
+    # + return - Returns an array of `Match` objects if the text found, otherwise returns `Error`.
+    public isolated function findAllText(string text) returns Match[]|Error = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 
