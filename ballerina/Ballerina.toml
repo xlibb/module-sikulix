@@ -272,164 +272,164 @@ groupId = "org.openpnp"
 artifactId = "opencv"
 version = "4.3.0-3"
 
-# transitive dependency of com.sikulix:sikulixapi:2.0.5
-[[platform.java17.dependency]]
-groupId = "commons-cli"
-artifactId = "commons-cli"
-version = "1.4"
+# # transitive dependency of com.sikulix:sikulixapi:2.0.5
+# [[platform.java17.dependency]]
+# groupId = "commons-cli"
+# artifactId = "commons-cli"
+# version = "1.4"
 
-# transitive dependency of com.sikulix:sikulixapi:2.0.5
-[[platform.java17.dependency]]
-groupId = "org.apache.commons"
-artifactId = "commons-exec"
-version = "1.3"
+# # transitive dependency of com.sikulix:sikulixapi:2.0.5
+# [[platform.java17.dependency]]
+# groupId = "org.apache.commons"
+# artifactId = "commons-exec"
+# version = "1.3"
 
-# transitive dependency of com.sikulix:sikulixapi:2.0.5
-[[platform.java17.dependency]]
-groupId = "net.java.dev.jna"
-artifactId = "jna-platform"
-version = "5.6.0"
+# # transitive dependency of com.sikulix:sikulixapi:2.0.5
+# [[platform.java17.dependency]]
+# groupId = "net.java.dev.jna"
+# artifactId = "jna-platform"
+# version = "5.6.0"
 
-# transitive dependency of net.java.dev.jna:jna-platform:5.6.0
-[[platform.java17.dependency]]
-groupId = "net.java.dev.jna"
-artifactId = "jna"
-version = "5.6.0"
+# # transitive dependency of net.java.dev.jna:jna-platform:5.6.0
+# [[platform.java17.dependency]]
+# groupId = "net.java.dev.jna"
+# artifactId = "jna"
+# version = "5.6.0"
 
-# transitive dependency of com.sikulix:sikulixapi:2.0.5
-[[platform.java17.dependency]]
-groupId = "net.oneandone.reflections8"
-artifactId = "reflections8"
-version = "0.11.6"
+# # transitive dependency of com.sikulix:sikulixapi:2.0.5
+# [[platform.java17.dependency]]
+# groupId = "net.oneandone.reflections8"
+# artifactId = "reflections8"
+# version = "0.11.6"
 
-# transitive dependency of net.oneandone.reflections8:reflections8:0.11.6
-[[platform.java17.dependency]]
-groupId = "org.javassist"
-artifactId = "javassist"
-version = "3.22.0-GA"
+# # transitive dependency of net.oneandone.reflections8:reflections8:0.11.6
+# [[platform.java17.dependency]]
+# groupId = "org.javassist"
+# artifactId = "javassist"
+# version = "3.22.0-GA"
 
-# transitive dependency of com.sikulix:sikulixapi:2.0.5
-[[platform.java17.dependency]]
-groupId = "net.sourceforge.tess4j"
-artifactId = "tess4j"
-version = "4.5.4"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "com.github.jai-imageio"
-artifactId = "jai-imageio-core"
-version = "1.4.0"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.ghost4j"
-artifactId = "ghost4j"
-version = "1.0.1"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "log4j"
-artifactId = "log4j"
-version = "1.2.17"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "commons-beanutils"
-artifactId = "commons-beanutils"
-version = "1.9.2"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "commons-collections"
-artifactId = "commons-collections"
-version = "3.2.1"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.apache.xmlgraphics"
-artifactId = "xmlgraphics-commons"
-version = "1.4"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "com.lowagie"
-artifactId = "itext"
-version = "2.1.7"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.apache.pdfbox"
-artifactId = "pdfbox"
-version = "2.0.21"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.apache.pdfbox"
-artifactId = "fontbox"
-version = "2.0.21"
+# # transitive dependency of com.sikulix:sikulixapi:2.0.5
+# [[platform.java17.dependency]]
+# groupId = "net.sourceforge.tess4j"
+# artifactId = "tess4j"
+# version = "4.5.4"
 
 # # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
 # [[platform.java17.dependency]]
-# groupId = "commons-logging"
-# artifactId = "commons-logging"
-# version = "1.2"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.apache.pdfbox"
-artifactId = "pdfbox-tools"
-version = "2.0.21"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.apache.pdfbox"
-artifactId = "pdfbox-debugger"
-version = "2.0.21"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.apache.pdfbox"
-artifactId = "jbig2-imageio"
-version = "3.0.3"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "commons-io"
-artifactId = "commons-io"
-version = "2.8.0"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "net.sourceforge.lept4j"
-artifactId = "lept4j"
-version = "1.13.2"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.jboss"
-artifactId = "jboss-vfs"
-version = "3.2.15.Final"
-
-# transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
-[[platform.java17.dependency]]
-groupId = "org.jboss.logging"
-artifactId = "jboss-logging"
-version = "3.1.4.GA"
+# groupId = "com.github.jai-imageio"
+# artifactId = "jai-imageio-core"
+# version = "1.4.0"
 
 # # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.ghost4j"
+# artifactId = "ghost4j"
+# version = "1.0.1"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "log4j"
+# artifactId = "log4j"
+# version = "1.2.17"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "commons-beanutils"
+# artifactId = "commons-beanutils"
+# version = "1.9.2"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "commons-collections"
+# artifactId = "commons-collections"
+# version = "3.2.1"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.apache.xmlgraphics"
+# artifactId = "xmlgraphics-commons"
+# version = "1.4"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "com.lowagie"
+# artifactId = "itext"
+# version = "2.1.7"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.apache.pdfbox"
+# artifactId = "pdfbox"
+# version = "2.0.21"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.apache.pdfbox"
+# artifactId = "fontbox"
+# version = "2.0.21"
+
+# # # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# # [[platform.java17.dependency]]
+# # groupId = "commons-logging"
+# # artifactId = "commons-logging"
+# # version = "1.2"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.apache.pdfbox"
+# artifactId = "pdfbox-tools"
+# version = "2.0.21"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.apache.pdfbox"
+# artifactId = "pdfbox-debugger"
+# version = "2.0.21"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.apache.pdfbox"
+# artifactId = "jbig2-imageio"
+# version = "3.0.3"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "commons-io"
+# artifactId = "commons-io"
+# version = "2.8.0"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "net.sourceforge.lept4j"
+# artifactId = "lept4j"
+# version = "1.13.2"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.jboss"
+# artifactId = "jboss-vfs"
+# version = "3.2.15.Final"
+
+# # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# [[platform.java17.dependency]]
+# groupId = "org.jboss.logging"
+# artifactId = "jboss-logging"
+# version = "3.1.4.GA"
+
+# # # transitive dependency of net.sourceforge.tess4j:tess4j:4.5.4
+# # [[platform.java17.dependency]]
+# # groupId = "org.slf4j"
+# # artifactId = "slf4j-api"
+# # version = "1.7.30"
+
+# # transitive dependency of com.sikulix:sikulixapi:2.0.5
 # [[platform.java17.dependency]]
 # groupId = "org.slf4j"
-# artifactId = "slf4j-api"
-# version = "1.7.30"
+# artifactId = "slf4j-nop"
+# version = "1.7.28"
 
-# transitive dependency of com.sikulix:sikulixapi:2.0.5
-[[platform.java17.dependency]]
-groupId = "org.slf4j"
-artifactId = "slf4j-nop"
-version = "1.7.28"
-
-# transitive dependency of com.sikulix:sikulixapi:2.0.5
-[[platform.java17.dependency]]
-groupId = "net.sf.py4j"
-artifactId = "py4j"
-version = "0.10.9.1"
+# # transitive dependency of com.sikulix:sikulixapi:2.0.5
+# [[platform.java17.dependency]]
+# groupId = "net.sf.py4j"
+# artifactId = "py4j"
+# version = "0.10.9.1"
