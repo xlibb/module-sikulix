@@ -7,78 +7,8 @@
     "gender": "male",
     "address": "123 Main Street, Springfield",
     "mobile": "+1234567890",
-    "district": "Springfield",
+    "district": "Gampaha",
     "gramaSevaka": "John Smith",
     "nic": "123456789V",
-    "passport": "A1234567",
-    "emergency": {
-        "name": "Jane Doe",
-        "address": "456 Elm Street, Springfield",
-        "mobile": "+0987654321",
-        "relationship": "Spouse",
-        "email": "jane.doe@example.com"
-    },
-    "olResults": {
-        "school": "Springfield High School",
-        "year": "2007",
-        "index": "OL12345",
-        "results": [
-            {
-                "subject": "Mathematics",
-                "grade": "A"
-            },
-            {
-                "subject": "Science",
-                "grade": "B"
-            },
-            {
-                "subject": "English",
-                "grade": "A"
-            }
-        ]
-    },
-    "alResults": {
-        "school": "Springfield High School",
-        "year": "2010",
-        "index": "AL54321",
-        "zScore": "1.75",
-        "results": [
-            {
-                "subject": "Physics",
-                "grade": "B"
-            },
-            {
-                "subject": "Chemistry",
-                "grade": "B"
-            },
-            {
-                "subject": "Mathematics",
-                "grade": "A"
-            }
-        ]
-    },
-    "otherQualifications": [
-        {
-            "course": "Diploma in IT",
-            "nvqLevel": "4",
-            "institute": "Tech Academy",
-            "year": "2012",
-            "result": "Pass"
-        }
-    ],
-    "extraCurricularActivities": "Captain of school football team",
-    "refrees": [
-        {
-            "name": "Mr. Mark Smith",
-            "designation": "Manager",
-            "address": "789 Pine Street, Springfield",
-            "mobile": "+1122334455"
-        },
-        {
-            "name": "Ms. Lisa Johnson",
-            "designation": "Lecturer",
-            "address": "456 Oak Street, Springfield",
-            "mobile": "+2233445566"
-        }
-    ]
+    "passport": "A1234567"
 }

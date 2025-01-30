@@ -14,7 +14,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-# Represents keyboard keys
+# Represents keyboard keys.
 public enum Key {
     ENTER,
     BACKSPACE,
