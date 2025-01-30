@@ -22,10 +22,10 @@ import io.ballerina.runtime.api.values.BError;
 import org.sikuli.script.FindFailed;
 
 public class Utils {
-    public static final String ERROR_TYPE = "Error";
-    public static final String FIND_FAILED_ERROR_TYPE = "FindFailedError";
+    private static final String ERROR_TYPE = "Error";
+    private static final String FIND_FAILED_ERROR_TYPE = "FindFailedError";
 
-    public static BError getBError(String message, Exception e) {
+    public static BError createBError(String message, Exception e) {
         if (e instanceof FindFailed) {
             BError cause = ErrorCreator.createError(e);
             return ErrorCreator.createError(ModuleUtils.getModule(), FIND_FAILED_ERROR_TYPE,

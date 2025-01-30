@@ -16,12 +16,8 @@
 
 package io.ballerina.lib.sikulix;
 
-import io.ballerina.lib.sikulix.utils.ModuleUtils;
 import io.ballerina.lib.sikulix.utils.Utils;
-import io.ballerina.runtime.api.creators.TypeCreator;
 import io.ballerina.runtime.api.creators.ValueCreator;
-import io.ballerina.runtime.api.types.ArrayType;
-import io.ballerina.runtime.api.types.Type;
 import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BMap;
 import io.ballerina.runtime.api.values.BObject;
@@ -30,15 +26,19 @@ import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Region;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
+import static io.ballerina.lib.sikulix.SikulixMatch.getMatchArrayType;
+import static io.ballerina.lib.sikulix.SikulixMatch.getMatchBObject;
+import static io.ballerina.lib.sikulix.SikulixMatch.getMatchBObjectArr;
+
+/**
+ * Provide APIs to interact with a rectangular area within a Screen.
+ *
+ * @since 0.1.0
+ */
 public class SikulixRegion {
-    public static final String REGION_OBJECT = "nativeRegionObject";
-    public static final String ERROR_TYPE = "Error";
-    public static final String MATCH_OBJECT_TYPE = "Match";
-    public static final String MATCH_OBJECT = "nativeMatchObject";
+    private static final String REGION_OBJECT = "nativeRegionObject";
 
     public static Object createRegion(BObject bRegion, BMap<BString, Object> rectangle) {
         try {
@@ -49,7 +49,7 @@ public class SikulixRegion {
             bRegion.addNativeData(REGION_OBJECT, new Region(x, y, w, h));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -58,7 +58,7 @@ public class SikulixRegion {
             getRegion(bRegion).click();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -67,7 +67,7 @@ public class SikulixRegion {
             getRegion(bRegion).hover();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -76,7 +76,7 @@ public class SikulixRegion {
             getRegion(bRegion).doubleClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -85,16 +85,16 @@ public class SikulixRegion {
             getRegion(bRegion).rightClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
-    public static Object dragDrop(BObject bRegion, BString imagePath1, BString imagePath2) {
+    public static Object dragDrop(BObject bRegion, BString sourceImagePath, BString destinationImagePath) {
         try {
-            getRegion(bRegion).dragDrop(imagePath1, imagePath2);
+            getRegion(bRegion).dragDrop(sourceImagePath, destinationImagePath);
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -103,7 +103,7 @@ public class SikulixRegion {
             Match match = getRegion(bRegion).exists(imagePath);
             return match != null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -112,7 +112,7 @@ public class SikulixRegion {
             getRegion(bRegion).keyDown(SikulixKey.getKey(keyText.toString()));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -121,7 +121,7 @@ public class SikulixRegion {
             getRegion(bRegion).keyUp(SikulixKey.getKey(keyText.toString()));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -130,7 +130,7 @@ public class SikulixRegion {
             getRegion(bRegion).type(SikulixKey.getKey(keyText.toString()));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -139,7 +139,7 @@ public class SikulixRegion {
             getRegion(bRegion).type(value.toString());
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -148,7 +148,7 @@ public class SikulixRegion {
             getRegion(bRegion).wheel(direction, steps);
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -157,7 +157,7 @@ public class SikulixRegion {
             Match match = getRegion(bRegion).existsText(text.toString());
             return match != null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -166,7 +166,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getBottomLeft();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -175,7 +175,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getBottomLeft();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -184,7 +184,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getBottomRight();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -193,7 +193,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getBottomRight();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -202,7 +202,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getTopLeft();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -211,7 +211,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getTopLeft();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -220,7 +220,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getTopRight();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -229,7 +229,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getTopRight();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -238,7 +238,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getCenter();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -247,7 +247,7 @@ public class SikulixRegion {
             Location location = getRegion(bRegion).getCenter();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -255,7 +255,7 @@ public class SikulixRegion {
         try {
             return getRegion(bRegion).getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -263,7 +263,7 @@ public class SikulixRegion {
         try {
             return getRegion(bRegion).getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -271,7 +271,7 @@ public class SikulixRegion {
         try {
             return getRegion(bRegion).getW();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -279,7 +279,7 @@ public class SikulixRegion {
         try {
             return getRegion(bRegion).getH();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -287,7 +287,7 @@ public class SikulixRegion {
         try {
             return StringUtils.fromString(getRegion(bRegion).text());
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -296,7 +296,7 @@ public class SikulixRegion {
             Match match = getRegion(bRegion).find(imagePath.toString());
             return getMatchBObject(match);
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -305,44 +305,21 @@ public class SikulixRegion {
             Match match = getRegion(bRegion).findText(text.toString());
             return getMatchBObject(match);
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
     public static Object findAll(BObject bRegion, BString imagePath) {
         try {
-            Iterator<Match> matches = getRegion(bRegion).findAll(imagePath.toString());
+            List<Match> matches = getRegion(bRegion).findAllList(imagePath.toString());
             return ValueCreator.createArrayValue(getMatchBObjectArr(matches), getMatchArrayType());
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
-    }
-
-    private static BObject[] getMatchBObjectArr(Iterator<Match> matches) {
-        List<Match> matchList = new ArrayList<>();
-        while (matches.hasNext()) {
-            matchList.add(matches.next());
-        }
-        BObject[] matchArr = new BObject[matchList.size()];
-        for (int i = 0; i < matchList.size(); i++) {
-            matchArr[i] = getMatchBObject(matchList.get(i));
-        }
-        return matchArr;
-    }
-
-    public static ArrayType getMatchArrayType() {
-        Type type = TypeCreator.createObjectType(MATCH_OBJECT_TYPE, ModuleUtils.getModule(), 0);
-        return TypeCreator.createArrayType(type);
     }
 
     private static Region getRegion(BObject bRegion) {
         return (Region) bRegion.getNativeData(REGION_OBJECT);
-    }
-
-    private static BObject getMatchBObject(Match match) {
-        BObject matchBObj = ValueCreator.createObjectValue(ModuleUtils.getModule(), MATCH_OBJECT_TYPE, (Object) null);
-        matchBObj.addNativeData(MATCH_OBJECT, match);
-        return matchBObj;
     }
 
 }

@@ -22,7 +22,7 @@ public isolated class Region {
     # Initializes the `Region` object.
     #
     # + rectangle - The rectangle that defines the region.
-    public isolated function init(Rectangle rectangle) returns Error? {
+    public isolated function init(*Rectangle rectangle) returns Error? {
         check self.createRegion(rectangle);
     }
     
@@ -60,10 +60,10 @@ public isolated class Region {
 
     # Drags an element from one location to another inside the corresponding `Region`.
     #
-    # + imagePath1 - The path to the image of the element to be dragged.
-    # + imagePath2 - The path to the image of the location to drop the element.
+    # + sourceImagePath - The path to the image of the element to be dragged.
+    # + destinationImagePath - The path to the image of the location to drop the element.
     # + return - Returns `()` if operation successful, otherwise returns `Error`.
-    public isolated function dragDrop(string imagePath1, string imagePath2) returns Error? = @java:Method {
+    public isolated function dragDrop(string sourceImagePath, string destinationImagePath) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixRegion"
     } external;
 

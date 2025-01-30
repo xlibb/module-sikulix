@@ -16,7 +16,12 @@
 
 package io.ballerina.lib.sikulix;
 
+import io.ballerina.lib.sikulix.utils.ModuleUtils;
 import io.ballerina.lib.sikulix.utils.Utils;
+import io.ballerina.runtime.api.creators.TypeCreator;
+import io.ballerina.runtime.api.creators.ValueCreator;
+import io.ballerina.runtime.api.types.ArrayType;
+import io.ballerina.runtime.api.types.Type;
 import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BObject;
 import io.ballerina.runtime.api.values.BString;
@@ -24,12 +29,17 @@ import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Screen;
 
+import java.util.List;
+
+/**
+ * Provide APIs to interact with the result of a successful find operation.
+ *
+ * @since 0.1.0
+ */
 public class SikulixMatch {
 
-    public static final String MATCH_OBJECT = "nativeMatchObject";
-    public static final String ERROR_TYPE = "Error";
-    public static final String LOCATION_OBJECT_TYPE = "Location";
-    public static final String LOCATION_OBJECT = "nativeLocationObject";
+    private static final String MATCH_OBJECT = "nativeMatchObject";
+    private static final String MATCH_OBJECT_TYPE = "Match";
 
     public static Object click(BObject bMatch) {
         try {
@@ -37,7 +47,7 @@ public class SikulixMatch {
             match.click();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -47,7 +57,7 @@ public class SikulixMatch {
             match.doubleClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -57,7 +67,7 @@ public class SikulixMatch {
             match.rightClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -67,7 +77,7 @@ public class SikulixMatch {
             match.hover();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -79,7 +89,7 @@ public class SikulixMatch {
             screen.type(text.toString());
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -88,7 +98,7 @@ public class SikulixMatch {
             Match match = getMatch(bMatch);
             return StringUtils.fromString(match.getText());
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -97,7 +107,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getBottomLeft();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -106,7 +116,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getBottomLeft();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -115,7 +125,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getBottomRight();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -124,7 +134,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getBottomRight();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -133,7 +143,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getTopLeft();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -142,7 +152,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getTopLeft();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -151,7 +161,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getTopRight();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -160,7 +170,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getTopRight();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -169,7 +179,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getCenter();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -178,7 +188,7 @@ public class SikulixMatch {
             Location location = getMatch(bMatch).getCenter();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -186,7 +196,7 @@ public class SikulixMatch {
         try {
             return getMatch(bMatch).getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -194,7 +204,7 @@ public class SikulixMatch {
         try {
             return getMatch(bMatch).getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -202,7 +212,7 @@ public class SikulixMatch {
         try {
             return getMatch(bMatch).getW();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -210,7 +220,7 @@ public class SikulixMatch {
         try {
             return getMatch(bMatch).getH();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -218,4 +228,22 @@ public class SikulixMatch {
         return (Match) bMatch.getNativeData(MATCH_OBJECT);
     }
 
+    public static BObject getMatchBObject(Match match) {
+        BObject matchBObj = ValueCreator.createObjectValue(ModuleUtils.getModule(), MATCH_OBJECT_TYPE, (Object) null);
+        matchBObj.addNativeData(MATCH_OBJECT, match);
+        return matchBObj;
+    }
+
+    public static ArrayType getMatchArrayType() {
+        Type type = TypeCreator.createObjectType(MATCH_OBJECT_TYPE, ModuleUtils.getModule(), 0);
+        return TypeCreator.createArrayType(type);
+    }
+
+    public static BObject[] getMatchBObjectArr(List<Match> matches) {
+        BObject[] matchArr = new BObject[matches.size()];
+        for (int i = 0; i < matches.size(); i++) {
+            matchArr[i] = getMatchBObject(matches.get(i));
+        }
+        return matchArr;
+    }
 }

@@ -60,10 +60,10 @@ public isolated class Screen {
 
     # Drags an element from one location to another inside the corresponding `Screen`.
     #
-    # + imagePath1 - The path to the image of the element to be dragged.
-    # + imagePath2 - The path to the image of the location to drop the element.
+    # + sourceImagePath - The path to the image of the element to be dragged.
+    # + destinationImagePath - The path to the image of the location to drop the element.
     # + return - Returns `()` if operation successful, otherwise returns `Error`.
-    public isolated function dragDrop(string imagePath1, string imagePath2) returns Error? = @java:Method {
+    public isolated function dragDrop(string sourceImagePath, string destinationImagePath) returns Error? = @java:Method {
         'class: "io.ballerina.lib.sikulix.SikulixScreen"
     } external;
 

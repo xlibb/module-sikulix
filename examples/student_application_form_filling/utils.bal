@@ -16,10 +16,12 @@
 
 import ballerina/io;
 
+const dataSourcePath = "modules/resources/data.json";
+
 # The function reads JSON file and maps the data to Data record type.
 # + return - return converted Data object if conversion successful, otherwise return error 
 public function getData() returns Data|error {
-    json inputs = check io:fileReadJson("modules/resources/data.json");
+    json inputs = check io:fileReadJson(dataSourcePath);
     Data data = check inputs.cloneWithType();
     return data;
 }

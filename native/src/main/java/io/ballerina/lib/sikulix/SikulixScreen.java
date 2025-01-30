@@ -16,34 +16,35 @@
 
 package io.ballerina.lib.sikulix;
 
-import io.ballerina.lib.sikulix.utils.ModuleUtils;
 import io.ballerina.lib.sikulix.utils.Utils;
-import io.ballerina.runtime.api.creators.TypeCreator;
 import io.ballerina.runtime.api.creators.ValueCreator;
-import io.ballerina.runtime.api.types.ArrayType;
-import io.ballerina.runtime.api.types.Type;
 import io.ballerina.runtime.api.values.BObject;
 import io.ballerina.runtime.api.values.BString;
 import org.sikuli.script.Location;
 import org.sikuli.script.Match;
 import org.sikuli.script.Screen;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
+import static io.ballerina.lib.sikulix.SikulixMatch.getMatchArrayType;
+import static io.ballerina.lib.sikulix.SikulixMatch.getMatchBObject;
+import static io.ballerina.lib.sikulix.SikulixMatch.getMatchBObjectArr;
+
+/**
+ * Provide APIs to interact with the entire visible screen area.
+ *
+ * @since 0.1.0
+ */
 public class SikulixScreen {
 
-    public static final String SCREEN_OBJECT = "nativeScreenObject";
-    public static final String MATCH_OBJECT_TYPE = "Match";
-    public static final String MATCH_OBJECT = "nativeMatchObject";
+    private static final String SCREEN_OBJECT = "nativeScreenObject";
 
     public static Object createScreen(BObject bScreen) {
         try {
             bScreen.addNativeData(SCREEN_OBJECT, new Screen());
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -52,7 +53,7 @@ public class SikulixScreen {
             getScreen(bScreen).click();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -61,7 +62,7 @@ public class SikulixScreen {
             getScreen(bScreen).hover();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -70,7 +71,7 @@ public class SikulixScreen {
             getScreen(bScreen).doubleClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -79,16 +80,16 @@ public class SikulixScreen {
             getScreen(bScreen).rightClick();
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
-    public static Object dragDrop(BObject bScreen, BString imagePath1, BString imagePath2) {
+    public static Object dragDrop(BObject bScreen, BString sourceImagePath, BString destinationImagePath) {
         try {
-            getScreen(bScreen).dragDrop(imagePath1, imagePath2);
+            getScreen(bScreen).dragDrop(sourceImagePath, destinationImagePath);
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -97,7 +98,7 @@ public class SikulixScreen {
             Match match = getScreen(bScreen).find(imagePath.toString());
             return match.isValid();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -106,7 +107,7 @@ public class SikulixScreen {
             getScreen(bScreen).keyDown(SikulixKey.getKey(keyText.toString()));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -115,7 +116,7 @@ public class SikulixScreen {
             getScreen(bScreen).keyUp(SikulixKey.getKey(keyText.toString()));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -124,7 +125,7 @@ public class SikulixScreen {
             getScreen(bScreen).type(SikulixKey.getKey(keyText.toString()));
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -133,7 +134,7 @@ public class SikulixScreen {
             getScreen(bScreen).type(value.toString());
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -142,7 +143,7 @@ public class SikulixScreen {
             getScreen(bScreen).wheel(direction, steps);
             return null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -151,7 +152,7 @@ public class SikulixScreen {
             Match match = getScreen(bScreen).existsText(text.toString());
             return match != null;
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -160,7 +161,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getBottomLeft();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -169,7 +170,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getBottomLeft();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -178,7 +179,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getBottomRight();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -187,7 +188,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getBottomRight();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -196,7 +197,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getTopLeft();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -205,7 +206,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getTopLeft();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -214,7 +215,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getTopRight();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -223,7 +224,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getTopRight();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -232,7 +233,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getCenter();
             return location.getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -241,7 +242,7 @@ public class SikulixScreen {
             Location location = getScreen(bScreen).getCenter();
             return location.getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -249,7 +250,7 @@ public class SikulixScreen {
         try {
             return getScreen(bScreen).getX();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -257,7 +258,7 @@ public class SikulixScreen {
         try {
             return getScreen(bScreen).getY();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -265,7 +266,7 @@ public class SikulixScreen {
         try {
             return getScreen(bScreen).getW();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -273,7 +274,7 @@ public class SikulixScreen {
         try {
             return getScreen(bScreen).getH();
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -282,7 +283,7 @@ public class SikulixScreen {
             Match match = getScreen(bScreen).find(imagePath.toString());
             return getMatchBObject(match);
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
@@ -291,44 +292,21 @@ public class SikulixScreen {
             Match match = getScreen(bScreen).findText(text.toString());
             return getMatchBObject(match);
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
     }
 
     public static Object findAll(BObject bScreen, BString imagePath) {
         try {
-            Iterator<Match> matches = getScreen(bScreen).findAll(imagePath.toString());
+            List<Match> matches = getScreen(bScreen).findAllList(imagePath.toString());
             return ValueCreator.createArrayValue(getMatchBObjectArr(matches), getMatchArrayType());
         } catch (Exception e) {
-            return Utils.getBError(e.getMessage(), e);
+            return Utils.createBError(e.getMessage(), e);
         }
-    }
-
-    private static BObject[] getMatchBObjectArr(Iterator<Match> matches) {
-        List<Match> matchList = new ArrayList<>();
-        while (matches.hasNext()) {
-            matchList.add(matches.next());
-        }
-        BObject[] matchArr = new BObject[matchList.size()];
-        for (int i = 0; i < matchList.size(); i++) {
-            matchArr[i] = getMatchBObject(matchList.get(i));
-        }
-        return matchArr;
-    }
-
-    public static ArrayType getMatchArrayType() {
-        Type type = TypeCreator.createObjectType(MATCH_OBJECT_TYPE, ModuleUtils.getModule(), 0);
-        return TypeCreator.createArrayType(type);
     }
 
     private static Screen getScreen(BObject bScreen) {
         return (Screen) bScreen.getNativeData(SCREEN_OBJECT);
-    }
-
-    private static BObject getMatchBObject(Match match) {
-        BObject matchBObj = ValueCreator.createObjectValue(ModuleUtils.getModule(), MATCH_OBJECT_TYPE, (Object) null);
-        matchBObj.addNativeData(MATCH_OBJECT, match);
-        return matchBObj;
     }
 
 }

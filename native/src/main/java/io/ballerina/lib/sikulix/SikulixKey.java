@@ -18,7 +18,7 @@ package io.ballerina.lib.sikulix;
 
 import org.sikuli.script.Key;
 
-public class SikulixKey {
+class SikulixKey {
 
     public static String getKey(String keyText) {
         return switch (keyText) {
