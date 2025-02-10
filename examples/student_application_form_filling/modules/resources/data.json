@@ -1,0 +1,14 @@
+{
+    "fullName": "John Doe",
+    "nameWithInitials": "J. Doe",
+    "dob": "1990-01-01",
+    "age": "34",
+    "nationality": "American",
+    "gender": "male",
+    "address": "123 Main Street, Springfield",
+    "mobile": "+1234567890",
+    "district": "Gampaha",
+    "gramaSevaka": "John Smith",
+    "nic": "123456789V",
+    "passport": "A1234567"
+}

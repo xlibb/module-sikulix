@@ -1,0 +1,62 @@
+[package]
+distribution = "2201.10.0"
+org = "xlibb"
+name = "sikulix"
+version = "@toml.version@"
+license = ["Apache-2.0"]
+authors = ["Ballerina"]
+keywords = ["sikulix"] 
+icon = "icon.png"
+repository = "https://github.com/xlibb/module-sikulix"
+
+[build-options]
+observabilityIncluded = true
+
+[platform.java17]
+graalvmCompatible = true
+
+[[platform.java17.dependency]]
+groupId = "io.ballerina.lib.sikulix"
+artifactId = "sikulix-native"
+version = "@toml.version@"
+path = "../native/build/libs/sikulix-native-@project.version@.jar"
+
+[[platform.java17.dependency]]
+groupId = "com.sikulix"
+artifactId = "sikulixapi"
+version = "@sikulix.version@"
+
+[[platform.java17.dependency]]
+groupId = "org.openpnp"
+artifactId = "opencv"
+version = "@opencv.version@"
+
+[[platform.java17.dependency]]
+groupId = "net.java.dev.jna"
+artifactId = "jna-platform"
+version = "@jna.version@"
+
+[[platform.java17.dependency]]
+groupId = "net.java.dev.jna"
+artifactId = "jna"
+version = "@jna.version@"
+
+[[platform.java17.dependency]]
+groupId = "net.sourceforge.tess4j"
+artifactId = "tess4j"
+version = "@tess4j.version@"
+
+[[platform.java17.dependency]]
+groupId = "com.github.jai-imageio"
+artifactId = "jai-imageio-core"
+version = "@imageio.version@"
+
+[[platform.java17.dependency]]
+groupId = "commons-io"
+artifactId = "commons-io"
+version = "@commonsio.version@"
+
+[[platform.java17.dependency]]
+groupId = "net.sourceforge.lept4j"
+artifactId = "lept4j"
+version = "@lept4j.version@"
