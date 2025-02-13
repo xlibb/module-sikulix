@@ -73,7 +73,7 @@ public function main returns error? {
     sikulix:Screen screen = check new ();
     // Locate the element represented by "image.png" 
     // on the screen and store the match details.
-    sikulix:Match myMatch = check screen.find("<absolute-path-to>/target-image.png");
+    sikulix:Match myMatch = check screen.find("<absolute/path/to/target-image>");
     check myMatch.click()
 }
 ```
@@ -109,4 +109,4 @@ Save the screenshot images in a directory, preferably within your project folder
 
 The `sikulix` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/xlibb/module-sikulix/tree/main/examples/), covering the following use cases:
 
-1. [Automating the Filling of Student Application Form desktop Application.](https://github.com/xlibb/module-sikulix/tree/main/examples/student_applciation_form_filling)
+1. [Automating the Filling of Student Application Form desktop Application](https://github.com/xlibb/module-sikulix/tree/main/examples/student_applciation_form_filling).
