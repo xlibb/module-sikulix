@@ -15,7 +15,7 @@ This module automates desktop applications across Windows, Mac and Linux operati
 
 SikuliX enables image-based automation via screenshots, supports precise coordinate-based interactions, and offers OCR capabilities for text recognition.
 
-### Class  `Screen`
+### Class `Screen`
 
 The Screen instance represents the entire monitor which operates on the entire visible screen area.
 
@@ -28,7 +28,7 @@ public function main() returns error? {
 }
 ```
 
-### Class  `Region`
+### Class `Region`
 
 A Region is a rectangular area on a Screen, and is defined by,
 
@@ -48,12 +48,12 @@ public function main returns error? {
         topLeftY = 0, 
         width = 100, 
         height = 100
-    ); 
+    );
     check someRegion.click(); // Click on the center of the region.
 }
 ```
 
-### Class  `Location`
+### Class `Location`
 
 This class is to handle single points on the screen directly by its position (x, y).
 
@@ -69,7 +69,7 @@ public function main returns error? {
 }
 ```
 
-### Class  `Match`
+### Class `Match`
 
 Match represents the result of a successful find operation. It used for further actions (e.g., clicking, or analyzing the match region).
 
