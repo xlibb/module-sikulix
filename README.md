@@ -44,9 +44,9 @@ import xlibb/sikulix;
 
 public function main returns error? {
     sikulix:Region someRegion = check new(
-        topLeftX = 0, 
-        topLeftY = 0, 
-        width = 100, 
+        topLeftX = 0,
+        topLeftY = 0,
+        width = 100,
         height = 100
     );
     check someRegion.click(); // Click on the center of the region.
