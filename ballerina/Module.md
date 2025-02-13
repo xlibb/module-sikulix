@@ -34,12 +34,12 @@ You can use `find()`, to search a given image/text within the Region. If this Vi
 import xlibb/sikulix;
 
 public function main returns error? {
-    int topLeftX = 300;
-    int topLeftY = 100;
-    int height = 300;
-    int width = 600;
-
-    sikulix:Region someRegion = check new ({topLeftX, topLeftY, height, width});
+    sikulix:Region someRegion = check new(
+        topLeftX = 0, 
+        topLeftY = 0, 
+        width = 100, 
+        height = 100
+    ); 
     check someRegion.click(); // Click on the center of the region.
 }
 ```
@@ -52,9 +52,10 @@ This class is to handle single points on the screen directly by its position (x,
 import xlibb/sikulix;
 
 public function main returns error? {
-    int x = 300;
-    int y = 400;
-    sikulix:Location someLocation = check new ({x, y});
+    sikulix:Location someLocation = check new(
+        x = 100, 
+        y = 100
+    );
     check someLocation.click();
 }
 ```
@@ -72,7 +73,7 @@ public function main returns error? {
     sikulix:Screen screen = check new ();
     // Locate the element represented by "image.png" 
     // on the screen and store the match details.
-    sikulix:Match myMatch = check screen.find("absolute/path/to/folder/image.png");
+    sikulix:Match myMatch = check screen.find("<absolute-path-to>/target-image.png");
     check myMatch.click()
 }
 ```
@@ -83,7 +84,7 @@ To use images with the features of SikuliX like click(someImage), you need to st
 
 Using the **SikuliX IDE**, you can setup and maintain such visual workflows including capturing and organizing the needed images and finding x, y coordinate points.
 
-Go to the [SikuliX download page](https://launchpad.net/sikuli/+download) and download the latest version of the SikuliX IDE acccording to your operating system.
+Go to the [SikuliX download page](https://launchpad.net/sikuli/+download) and download the latest version of the SikuliX IDE according to your operating system.
 
 The IDE is only available as jar-file, that can be double-clicked to start it, usage in a command window: `java -jar <path-to>/sikulixide.jar`
 
@@ -108,4 +109,4 @@ Save the screenshot images in a directory, preferably within your project folder
 
 The `sikulix` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/xlibb/module-sikulix/tree/main/examples/), covering the following use cases:
 
-1. [Automating the Filling of Student Application Form desktop Application.](https://github.com/xlibb/module-sikulix/tree/main/examples/student_applciation_form_filling). 
+1. [Automating the Filling of Student Application Form desktop Application.](https://github.com/xlibb/module-sikulix/tree/main/examples/student_applciation_form_filling)

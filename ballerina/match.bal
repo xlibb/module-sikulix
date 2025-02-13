@@ -47,7 +47,7 @@ public isolated class Match {
         'class: "io.ballerina.lib.sikulix.SikulixMatch"
     } external;
 
-    # Types the given string at the location.
+    # Types the given string at the given element represents by `Match` object.   
     #
     # + value - The string to be typed.
     # 
