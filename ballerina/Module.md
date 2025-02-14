@@ -1,10 +1,20 @@
 ## Overview
 
-This module automates desktop applications across Windows, Mac and Linux operating systems. 
+[SikuliX](https://sikulix.github.io/) automates anything in Windows, Mac or Linux screen. It uses image recognition powered by OpenCV, text recognition powered by OCR and precise coordinate-based interactions.
+
+The `xlibb/sikulix` package offers APIs to connect to Sikulix to automate desktop applications.  
 
 ## Quickstart
 
 SikuliX enables image-based automation via screenshots, supports precise coordinate-based interactions, and offers OCR capabilities for text recognition.
+
+### Import module
+
+Import the `sikulix` module.
+
+```ballerina
+import xlibb/sikulix;
+```
 
 ### Class `Screen`
 
