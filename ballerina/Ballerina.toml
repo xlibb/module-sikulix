@@ -19,7 +19,7 @@ graalvmCompatible = true
 groupId = "io.ballerina.lib.sikulix"
 artifactId = "sikulix-native"
 version = "0.1.0"
-path = "../native/build/libs/sikulix-native-0.1.0-SNAPSHOT.jar"
+path = "../native/build/libs/sikulix-native-0.1.0.jar"
 
 [[platform.java17.dependency]]
 groupId = "com.sikulix"
